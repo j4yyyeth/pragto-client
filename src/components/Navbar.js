@@ -18,7 +18,7 @@ const Navbar = () => {
 
     return (
         <nav>
-        <Link to={'/'}><span>PRAGTO</span></Link>
+        <Link to={'/'}>PRAGTO</Link>
             {
                 getToken() ? 
                 <>

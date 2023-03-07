@@ -50,3 +50,32 @@ a:hover:before {
     opacity: 1;
     width: 100%;
 }
+
+.dashboard-block {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    width: 30vw;
+    padding: 10px;
+    background-color: rgb(223, 223, 223);
+}
+
+.input-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.dashboard-block input {
+    padding: 10px;
+    width: 250px;
+    border: 3px solid black;
+}
+
+.dashboard-block input:focus, textarea {
+    outline: none !important;
+}
