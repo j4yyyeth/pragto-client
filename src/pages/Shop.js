@@ -4,7 +4,7 @@ import { post, get } from "../services/authService"
 
 const Shop = () => {
 
-    const { user, leisures, setLeisures } = useContext(LoadingContext)
+    const { user, leisures, setLeisures, points, setPoints } = useContext(LoadingContext)
 
 
     const [ newLeisure, setNewLeisure ] = useState(
@@ -37,8 +37,13 @@ const Shop = () => {
 
     const handleDelete = (e) => {
         e.preventDefault()
-        get(`leisure/delete/${user._id}`)
+        get(`/leisure/delete/${user._id}`)
         console.log(user._id)
+    }
+
+    const handleAdd = (e) => {
+        e.preventDefault()
+        // setPoints(points + )          // handling the add of a leisure into task array
     }
 
   return (
@@ -58,13 +63,12 @@ const Shop = () => {
             </form>
             { user &&
                 user.leisures.map((leisure, i) => {
-                    console.log(leisure)
                     return (
                         <div className="list-item" key={i}>
-                            <button className="check-btn">✔️</button>
-                            {/* later replace with check image */}
+                            <button className="check-btn">➕</button>
+                            {/* later replace with plus image */}
                             <h4>{leisure.leisure}</h4>
-                            <p>PTS: {leisure.cost}</p>
+                            <p>Cost: {leisure.cost}</p>
                             <button className="delete-btn" onClick={handleDelete}>𝙓</button>
                             {/* later replace with delete image */}
                         </div>

@@ -1,9 +1,14 @@
 import { useContext, useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
 import { LoadingContext } from "../context/loading"
 import { post, get} from "../services/authService"
+import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+
+    const navigate = useNavigate();
+
+    let { id } = useParams();
 
     const { user, setUser, tasks, setTasks } = useContext(LoadingContext)
 
@@ -14,6 +19,10 @@ const Dashboard = () => {
             reward: ''
         }
     )
+
+    useEffect(() => {
+        // 
+    }, [  ]) // setTasks? handleSubmit? // // to make the page re-render to show new task added
 
     const handleChange = (e) => {
         setNewTask((recent) => ({...recent, [e.target.name]: e.target.value}))
@@ -35,10 +44,12 @@ const Dashboard = () => {
     }
 
 
-    const handleDelete = (e) => {
-        e.preventDefault()
-        get(`todo/delete/${user._id}`)
-        console.log(user._id)
+    const handleDelete = (id) => {
+        get(`/todo/delete/${id}`)
+            .then((results) => {
+                setUser(results.data)
+            })
+        console.log(id)
     }
 
   return (
@@ -55,6 +66,10 @@ const Dashboard = () => {
                 </div>
             </form>
             { user &&
+                <>
+
+                { user.tasks?.length ?
+                
                 user.tasks.map((task, i) => {
                     return (
                         <div className="list-item" key={i}>
@@ -62,11 +77,18 @@ const Dashboard = () => {
                             {/* later replace _/ with check image */}
                             <h4>{task.task}</h4>
                             <p>PTS: {task.reward}</p>
-                            <button className="delete-btn" onClick={handleDelete}>𝙓</button>
+                            <button className="delete-btn" onClick={()=>handleDelete(task._id)}>𝙓</button>
                             {/* later replace X with delete image */}
                         </div>
                     ) 
                 })
+
+                : <h4>No tasks...</h4>
+                
+                }
+
+
+                </>
                 
             }
         </div>
