@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { LoadingContext } from "../context/loading"
-import { post } from "../services/authService"
+import { post, get } from "../services/authService"
 
 const Shop = () => {
 
@@ -35,6 +35,12 @@ const Shop = () => {
             })
     }
 
+    const handleDelete = (e) => {
+        e.preventDefault()
+        get(`leisure/delete/${user._id}`)
+        console.log(user._id)
+    }
+
   return (
     <div>
         <h3>Welcome to the Shop!</h3>
@@ -50,17 +56,21 @@ const Shop = () => {
                     <button type="submit">Add</button>
                 </div>
             </form>
-            {/* {
-                user.tasks.map((task, i) => {
+            { user &&
+                user.leisures.map((leisure, i) => {
                     return (
                         <div className="list-item" key={i}>
-                            <h2>{task.task}</h2>
-                            <h4>{task.reward}</h4>
+                            <button className="check-btn">✔️</button>
+                            {/* later replace with check image */}
+                            <h4>{leisure.leisure}</h4>
+                            <p>PTS: {leisure.cost}</p>
+                            <button className="delete-btn" onClick={handleDelete}>𝙓</button>
+                            {/* later replace with delete image */}
                         </div>
                     ) 
                 })
                 
-            } */}
+            }
         </div>
     </div>
   )
