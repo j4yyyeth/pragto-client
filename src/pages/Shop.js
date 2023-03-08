@@ -20,7 +20,7 @@ const Shop = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(`/todo/create/${user._id}`, newLeisure)
+        post(`/leisure/create/${user._id}`, newLeisure)
             .then((results) => {
 
                 let newLeisures = [...leisures]
