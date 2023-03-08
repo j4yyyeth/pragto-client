@@ -20,10 +20,6 @@ const Dashboard = () => {
         }
     )
 
-    useEffect(() => {
-        // 
-    }, [  ]) // setTasks? handleSubmit? // // to make the page re-render to show new task added
-
     const handleChange = (e) => {
         setNewTask((recent) => ({...recent, [e.target.name]: e.target.value}))
     }
@@ -49,8 +45,14 @@ const Dashboard = () => {
             .then((results) => {
                 setUser(results.data)
             })
-        console.log(id)
     }
+
+    // const handleUpdate = (id) => {
+    //     put(`/todo/update/${id}`)
+    //         .then((results) => {
+    //             setUser(results.data)
+    //         })
+    // }
 
   return (
     <div>
@@ -79,6 +81,7 @@ const Dashboard = () => {
                             <p>PTS: {task.reward}</p>
                             <button className="delete-btn" onClick={()=>handleDelete(task._id)}>𝙓</button>
                             {/* later replace X with delete image */}
+                            <button onClick={()=>handleUpdate(task._id)}>✎</button>
                         </div>
                     ) 
                 })
