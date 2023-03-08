@@ -4,7 +4,7 @@ import { post, get } from "../services/authService"
 
 const Shop = () => {
 
-    const { user, leisures, setLeisures, points, setPoints } = useContext(LoadingContext)
+    const { user, setUser, leisures, setLeisures, points, setPoints } = useContext(LoadingContext)
 
 
     const [ newLeisure, setNewLeisure ] = useState(
@@ -35,10 +35,12 @@ const Shop = () => {
             })
     }
 
-    const handleDelete = (e) => {
-        e.preventDefault()
-        get(`/leisure/delete/${user._id}`)
-        console.log(user._id)
+    const handleDelete = (id) => {
+        get(`/leisure/delete/${id}`)
+            .then((results) => {
+                setUser(results.data)
+            })
+        console.log(id)
     }
 
     const handleAdd = (e) => {
@@ -69,7 +71,7 @@ const Shop = () => {
                             {/* later replace with plus image */}
                             <h4>{leisure.leisure}</h4>
                             <p>Cost: {leisure.cost}</p>
-                            <button className="delete-btn" onClick={handleDelete}>𝙓</button>
+                            <button className="delete-btn" onClick={()=>handleDelete(leisure._id)}>𝙓</button>
                             {/* later replace with delete image */}
                         </div>
                     ) 
