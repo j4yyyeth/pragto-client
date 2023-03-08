@@ -1,7 +1,7 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { LoadingContext } from "../context/loading"
-import { post } from "../services/authService"
+import { post, get} from "../services/authService"
 
 const Dashboard = () => {
 
@@ -28,12 +28,17 @@ const Dashboard = () => {
                 newTasks.unshift(results.data)
                 setTasks(newTasks)
 
-                console.log(user)
-
             })
             .catch((err) => {
                 console.log(err)
             })
+    }
+
+
+    const handleDelete = (e) => {
+        e.preventDefault()
+        get(`todo/delete/${user._id}`)
+        console.log(user._id)
     }
 
   return (
@@ -45,16 +50,20 @@ const Dashboard = () => {
                     <label>Task</label>
                     <input type="text" name="task" required={true} onChange={handleChange}></input>
                     <label>Points</label>
-                    <input type="number" name="reward" required={true} onChange={handleChange}></input>
+                    <input type="number" min='0' name="reward" required={true} onChange={handleChange}></input>
                     <button type="submit">Add</button>
                 </div>
             </form>
-            {
+            { user &&
                 user.tasks.map((task, i) => {
                     return (
                         <div className="list-item" key={i}>
-                            <h2>{task.task}</h2>
-                            <h4>{task.reward}</h4>
+                            <button className="check-btn">✔️</button>
+                            {/* later replace _/ with check image */}
+                            <h4>{task.task}</h4>
+                            <p>PTS: {task.reward}</p>
+                            <button className="delete-btn" onClick={handleDelete}>𝙓</button>
+                            {/* later replace X with delete image */}
                         </div>
                     ) 
                 })

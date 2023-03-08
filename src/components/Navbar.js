@@ -9,8 +9,6 @@ const Navbar = () => {
         return localStorage.getItem('authToken');
     }
 
-    const { user } = useContext(LoadingContext);
-
     const { logout } = useContext(AuthContext);
 
     return (
@@ -19,9 +17,9 @@ const Navbar = () => {
             {
                 getToken() ? 
                 <>
-                    {/* {user && <Link to={`/dashboard/${user._id}`}>Dashboard</Link>}  */}
                     <Link to={'/dashboard'}>Dashboard</Link>
                     <Link to={'/shop'}>Shop</Link>
+                    <h3>PTS: users points</h3>
                     <Link onClick={logout}>Logout</Link>
                 </>
 

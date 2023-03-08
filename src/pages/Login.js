@@ -28,7 +28,7 @@ const Login = () => {
         post('/auth/login', thisUser)
             .then((results) => {
                 console.log("Created User", results.data)
-                navigate(`/dashboard/${results.data._id}`)
+                navigate('/')
                 localStorage.setItem('authToken', results.data.token )
                 
             })

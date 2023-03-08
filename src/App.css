@@ -14,7 +14,6 @@ nav {
     align-items: center;
     gap: 45px;
     background-color: rgb(223, 223, 223);
-    border-bottom: 1px solid #00539CFF;
 }
 
 a {
@@ -59,15 +58,15 @@ a:hover:before {
     height: 80vh;
     width: 80vw;
     padding: 10px;
-    background-color: rgb(223, 223, 223);
+    gap: 10px;
 }
 
 .input-button {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 20px;
 }
 
 .dashboard-block input {
@@ -81,6 +80,20 @@ a:hover:before {
 }
 
 .list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
     border: 1px solid black;
-    width: 200px;
+    width: 300px;
+    padding: 2px;
+}
+
+.check-btn {
+    background-color: rgb(24, 206, 0);
+}
+
+.delete-btn {
+    background-color: red;
 }
