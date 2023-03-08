@@ -81,7 +81,7 @@ const Dashboard = () => {
                             <p>PTS: {task.reward}</p>
                             <button className="delete-btn" onClick={()=>handleDelete(task._id)}>𝙓</button>
                             {/* later replace X with delete image */}
-                            <button onClick={()=>handleUpdate(task._id)}>✎</button>
+                            {/* <button onClick={()=>handleUpdate(task._id)}>✎</button> */}
                         </div>
                     ) 
                 })
