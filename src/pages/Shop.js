@@ -58,6 +58,7 @@ const Shop = () => {
             </form>
             { user &&
                 user.leisures.map((leisure, i) => {
+                    console.log(leisure)
                     return (
                         <div className="list-item" key={i}>
                             <button className="check-btn">✔️</button>
