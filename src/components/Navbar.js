@@ -5,11 +5,14 @@ import { AuthContext } from "../context/auth.context";
 
 const Navbar = () => {
 
+
     const getToken = () => {
         return localStorage.getItem('authToken');
     }
 
     const { logout } = useContext(AuthContext);
+
+    const { points } = useContext(LoadingContext);
 
     return (
         <nav>
@@ -19,7 +22,7 @@ const Navbar = () => {
                 <>
                     <Link to={'/dashboard'}>Dashboard</Link>
                     <Link to={'/shop'}>Shop</Link>
-                    <h3>PTS: users points</h3>
+                    <h3>PTS: {points}</h3>
                     <Link onClick={logout}>Logout</Link>
                 </>
 
