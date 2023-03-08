@@ -1,6 +1,3 @@
-// import { useContext } from "react"
-// import { LoadingContext } from "../context/loading.context"
-// import { AuthContext } from "../context/auth.context"
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { LoadingContext } from "../context/loading";
@@ -22,7 +19,7 @@ const Navbar = () => {
             {
                 getToken() ? 
                 <>
-                    {/* {user && <Link to={'/dashboard'}>Dashboard</Link>}  */}
+                    {/* {user && <Link to={`/dashboard/${user._id}`}>Dashboard</Link>}  */}
                     <Link to={'/dashboard'}>Dashboard</Link>
                     <Link to={'/shop'}>Shop</Link>
                     <Link onClick={logout}>Logout</Link>

@@ -28,7 +28,7 @@ const Login = () => {
         post('/auth/login', thisUser)
             .then((results) => {
                 console.log("Created User", results.data)
-                navigate(`/profile/${results.data._id}`)
+                navigate(`/dashboard/${results.data._id}`)
                 localStorage.setItem('authToken', results.data.token )
                 
             })
@@ -39,6 +39,7 @@ const Login = () => {
                 authenticateUser()
             })
     } 
+    
 
     return (
         <div>

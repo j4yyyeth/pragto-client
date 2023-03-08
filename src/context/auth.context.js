@@ -32,8 +32,6 @@ const AuthProvider = ({ children }) => {
                 })
                 .finally(() => {
                     setIsLoading(false)
-                    // console.log("This is the user", user)
-                    // console.log("LINee 38 message", message)
                 });
             } else {
                 localStorage.clear()
