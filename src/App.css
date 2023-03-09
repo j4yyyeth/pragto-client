@@ -96,10 +96,12 @@ a:hover:before {
 
 .check-btn {
     background-color: rgb(24, 206, 0);
+    border-radius: 10px;
 }
 
 .delete-btn {
     background-color: red;
+    border-radius: 10px;
 }
 
 /* .scratched {
@@ -117,11 +119,11 @@ a:hover:before {
     top: 50%;
     right: 0;
     border-top: 1px solid;
-    border-color: gray;
+    border-color: rgb(68, 68, 68);
   }
 
   .coins-img {
-    width: 85px;
+    width: 88px;
   }
 
   .points-nav {
@@ -129,5 +131,4 @@ a:hover:before {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-left: 1000px;
   }

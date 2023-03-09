@@ -8,6 +8,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Shop from './pages/Shop';
+import TaskUpdate from './pages/TaskUpdate';
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
         <Route element={<LoggedIn />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/task-update/:taskId" element={<TaskUpdate />} />
         </Route>
 
         <Route element={<NotLoggedIn />}>
