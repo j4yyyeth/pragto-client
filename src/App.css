@@ -101,3 +101,21 @@ a:hover:before {
 .delete-btn {
     background-color: red;
 }
+
+/* .scratched {
+    text-decoration: line-through;
+} */
+
+.scratched {
+    position: relative;
+  }
+
+  .scratched:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 50%;
+    right: 0;
+    border-top: 1px solid;
+    border-color: gray;
+  }

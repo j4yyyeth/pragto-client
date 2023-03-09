@@ -26,6 +26,7 @@ const Dashboard = () => {
         post(`/todo/create/${user._id}`, newTask)
             .then((results) => {
                 let newTasks = [...tasks]
+                console.log(newTasks)
                 newTasks.unshift(results.data)
                 setTasks(newTasks)
                 setUser(results.data);
@@ -47,14 +48,13 @@ const Dashboard = () => {
     }
 
     // const handleUpdate = (e) => {
-
+    //     //
     // }
 
     const handleCheck = () => {
         setCheck(true);
-        console.log(check);
         if (check === true) {
-            setPoints(points + 1)
+            setPoints(points + 1)  // have to click twice to set to true for some reason
         }
     }
 
@@ -81,7 +81,12 @@ const Dashboard = () => {
                         <div className="list-item" key={i}>
                             {/* <input type="checkbox"></input> */}
                             <button className="check-btn" onClick={handleCheck}>✓</button>
-                            <h4>{task.task}</h4>
+                            {
+                                check === true? 
+                                <h4 className="scratched">{task.task}</h4>
+
+                                : <h4>{task.task}</h4>
+                            }
                             <p>PTS: {task.reward}</p>
                             <button className="delete-btn" onClick={()=>handleDelete(task._id)}>𝙓</button>
                             {/* later replace X with delete image */}
