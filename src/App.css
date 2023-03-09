@@ -90,6 +90,10 @@ a:hover:before {
     padding: 2px;
 }
 
+.list-item input {
+    width: 15px;
+}
+
 .check-btn {
     background-color: rgb(24, 206, 0);
 }

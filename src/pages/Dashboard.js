@@ -1,16 +1,13 @@
 import { useContext, useState, useEffect } from "react"
 import { LoadingContext } from "../context/loading"
 import { post, get} from "../services/authService"
-import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
 
     const navigate = useNavigate();
 
-    let { id } = useParams();
-
-    const { user, setUser, tasks, setTasks } = useContext(LoadingContext)
+    const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = useContext(LoadingContext)
 
 
     const [ newTask, setNewTask ] = useState(
@@ -28,11 +25,10 @@ const Dashboard = () => {
         e.preventDefault();
         post(`/todo/create/${user._id}`, newTask)
             .then((results) => {
-
                 let newTasks = [...tasks]
                 newTasks.unshift(results.data)
                 setTasks(newTasks)
-
+                setUser(results.data);
             })
             .catch((err) => {
                 console.log(err)
@@ -45,14 +41,22 @@ const Dashboard = () => {
             .then((results) => {
                 setUser(results.data)
             })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
-    // const handleUpdate = (id) => {
-    //     put(`/todo/update/${id}`)
-    //         .then((results) => {
-    //             setUser(results.data)
-    //         })
+    // const handleUpdate = (e) => {
+
     // }
+
+    const handleCheck = () => {
+        setCheck(true);
+        console.log(check);
+        if (check === true) {
+            setPoints(points + 1)
+        }
+    }
 
   return (
     <div>
@@ -75,8 +79,8 @@ const Dashboard = () => {
                 user.tasks.map((task, i) => {
                     return (
                         <div className="list-item" key={i}>
-                            <button className="check-btn">✔️</button>
-                            {/* later replace _/ with check image */}
+                            {/* <input type="checkbox"></input> */}
+                            <button className="check-btn" onClick={handleCheck}>✓</button>
                             <h4>{task.task}</h4>
                             <p>PTS: {task.reward}</p>
                             <button className="delete-btn" onClick={()=>handleDelete(task._id)}>𝙓</button>

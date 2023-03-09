@@ -10,6 +10,11 @@ const LoadingProvider = ({ children }) => {
     const [tasks, setTasks] = useState([]);
     const [leisures, setLeisures] = useState([]);
     const [points, setPoints] = useState(0);
+    const [check, setCheck] = useState(false);
+
+    if (points < 0) {
+      setPoints(0);
+    }
 
     const getTasks = () => {
       get('/todo')
@@ -32,7 +37,7 @@ const LoadingProvider = ({ children }) => {
     }
 
     return (
-        <LoadingContext.Provider value={{user, setUser, isLoading, setIsLoading, getTasks, tasks, setTasks, getLeisures, leisures, setLeisures, points, setPoints}}>
+        <LoadingContext.Provider value={{user, setUser, isLoading, setIsLoading, getTasks, tasks, setTasks, getLeisures, leisures, setLeisures, points, setPoints, check, setCheck}}>
           {children}
         </LoadingContext.Provider>
       );

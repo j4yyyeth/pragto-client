@@ -43,9 +43,9 @@ const Shop = () => {
         console.log(id)
     }
 
-    const handleAdd = (e) => {
-        e.preventDefault()
-        // setPoints(points + )          // handling the add of a leisure into task array
+    const handleAdd = () => {   
+        setPoints(points - 1)
+      // handling the add of a leisure into task array
     }
 
   return (
@@ -67,7 +67,7 @@ const Shop = () => {
                 user.leisures.map((leisure, i) => {
                     return (
                         <div className="list-item" key={i}>
-                            <button className="check-btn">➕</button>
+                            <button className="check-btn" onClick={handleAdd}>➕</button>
                             {/* later replace with plus image */}
                             <h4>{leisure.leisure}</h4>
                             <p>Cost: {leisure.cost}</p>
