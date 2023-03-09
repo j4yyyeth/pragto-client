@@ -2,6 +2,8 @@ import { useContext, useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { LoadingContext } from "../context/loading"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
+import { baseUrl } from "../services/baseUrl"
 
 const TaskUpdate = () => {
     const navigate = useNavigate();
@@ -19,10 +21,19 @@ const TaskUpdate = () => {
 
     const handleChange = (e) => {
         setThisTask((recent) => ({...recent, [e.target.name]:e.target.value}));
+        console.log(thisTask)
       }
 
       const handleSubmit = (e) => {
         e.preventDefault();
+        axios.put(`${baseUrl}/todo/update/taskId`)
+            .then((updated) => {
+                setThisTask(updated);
+                navigate('/dashboard');
+            })
+            .catch((err) => {
+                console.log(err);
+            })
       }
 
   return (
