@@ -55,12 +55,12 @@ const Dashboard = () => {
         setCheck(true);
         if (check === true) {
             setPoints(points + 1)  // have to click twice to set to true for some reason
-        }
+        }                          // also need to save it .. when refreshed the check goes away
     }
 
   return (
     <div>
-        <h1>Dashboard</h1>
+        <h1>My Dashboard</h1>
         <div className="dashboard-block">
             <form onSubmit={handleSubmit}>
                 <div className="input-button">

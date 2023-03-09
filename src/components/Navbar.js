@@ -22,8 +22,11 @@ const Navbar = () => {
                 <>
                     <Link to={'/dashboard'}>Dashboard</Link>
                     <Link to={'/shop'}>Shop</Link>
-                    <h3>PTS: {points}</h3> <img src='../coins.png' alt="coins" />
                     <Link onClick={logout}>Logout</Link>
+                    <div class="points-nav">
+                        <img class="coins-img" src={require('../coins.png')} alt="coins" />
+                        <h3>{points}</h3>
+                    </div>
                 </>
 
                 : 
