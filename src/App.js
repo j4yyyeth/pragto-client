@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Shop from './pages/Shop';
 import TaskUpdate from './pages/TaskUpdate';
+import LeisureUpdate from './pages/LeisureUpdate';
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/task-update/:taskId" element={<TaskUpdate />} />
+          <Route path="/leisure-update/:leisureId" element={<LeisureUpdate />} />
         </Route>
 
         <Route element={<NotLoggedIn />}>

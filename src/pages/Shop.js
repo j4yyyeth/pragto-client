@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { LoadingContext } from "../context/loading"
 import { post, get } from "../services/authService"
+import { Link } from "react-router-dom"
 
 const Shop = () => {
 
@@ -64,18 +65,30 @@ const Shop = () => {
                 </div>
             </form>
             { user &&
+                <>
+
+                { user.leisures?.length ?
+                
                 user.leisures.map((leisure, i) => {
                     return (
-                        <div className="list-item" key={i}>
-                            <button className="check-btn" onClick={handleAdd}>➕</button>
-                            {/* later replace with plus image */}
-                            <h4>{leisure.leisure}</h4>
-                            <p>Cost: {leisure.cost}</p>
-                            <button className="delete-btn" onClick={()=>handleDelete(leisure._id)}>𝙓</button>
-                            {/* later replace with delete image */}
-                        </div>
+                            <div className="list-item" key={i}>
+                                {/* <input type="checkbox"></input> */}
+                                <button className="check-btn">➕</button>
+                                <h4>{leisure.leisure}</h4>
+                                <p>COST: {leisure.cost}</p>
+                                <button className="delete-btn" onClick={()=>handleDelete(leisure._id)}>𝙓</button>
+                                {/* later replace X with delete image */}
+                                <Link to={`/leisure-update/${leisure._id}`} key={leisure._id}><button>✎</button></Link>
+                            </div>
                     ) 
                 })
+
+                : <h4>No Leisures...</h4>
+                
+                }
+
+
+                </>
                 
             }
         </div>

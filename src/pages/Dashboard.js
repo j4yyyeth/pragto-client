@@ -1,13 +1,11 @@
 import { useContext, useState, useEffect } from "react"
 import { LoadingContext } from "../context/loading"
 import { post, get} from "../services/authService"
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
 
-    const navigate = useNavigate();
-
-    const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = useContext(LoadingContext)
+const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = useContext(LoadingContext)
 
 
     const [ newTask, setNewTask ] = useState(
