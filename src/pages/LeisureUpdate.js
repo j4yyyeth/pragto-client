@@ -46,6 +46,8 @@ const LeisureUpdate = () => {
     <form onSubmit={handleSubmit}>
         <label>Leisure:</label>
         <input type="text" name="leisure" value={thisLeisure.leisure} onChange={handleChange}></input>
+        <label>Cost:</label>
+        <input type="number" name="cost" value={thisLeisure.cost} onChange={handleChange}></input>
         <button type="submit">Change</button>
     </form>
         

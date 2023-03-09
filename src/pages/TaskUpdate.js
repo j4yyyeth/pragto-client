@@ -39,22 +39,24 @@ const TaskUpdate = () => {
 
   return (
     <div>
-    {thisTask ? 
-    <>
-    <h1>TaskUpdate</h1>
-    
-    <form onSubmit={handleSubmit}>
-        <label>Task:</label>
-        <input type="text" name="task" value={thisTask.task} onChange={handleChange}></input>
-        <button type="submit">Change</button>
-    </form>
+        {thisTask ? 
+        <>
+        <h1>TaskUpdate</h1>
         
-    </>
+        <form onSubmit={handleSubmit}>
+            <label>Task:</label>
+            <input type="text" name="task" value={thisTask.task} onChange={handleChange}></input>
+            <label>Reward:</label>
+            <input type="number" name="reward" value={thisTask.reward} onChange={handleChange}></input>
+            <button type="submit">Change</button>
+        </form>
+            
+        </>
 
-    
-    : <h4>Loading...</h4>
-    }
-    
+        
+        : <h4>Loading...</h4>
+        }
+        
     </div>
 
   )

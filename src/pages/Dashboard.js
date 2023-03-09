@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Dashboard = () => {
 
-const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = useContext(LoadingContext)
+const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints, leisures } = useContext(LoadingContext)
 
 
     const [ newTask, setNewTask ] = useState(
@@ -24,9 +24,8 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = u
         post(`/todo/create/${user._id}`, newTask)
             .then((results) => {
                 let newTasks = [...tasks]
-                console.log(newTasks)
                 newTasks.unshift(results.data)
-                setTasks(newTasks) // trying to get tasks to populate right away
+                setTasks(newTasks)
             })
             .catch((err) => {
                 console.log(err)
@@ -34,8 +33,18 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = u
     }
 
 
-    const handleDelete = (id) => {
+    const handleTaskDelete = (id) => {
         get(`/todo/delete/${id}`)
+            .then((results) => {
+                setUser(results.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
+    const handleLeisureDelete = (id) => {
+        get(`/leisure/delete/${id}`)
             .then((results) => {
                 setUser(results.data)
             })
@@ -51,9 +60,9 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = u
     const handleCheck = () => {
         if (check === false) {
             setCheck(true);
-            setPoints(points + 1)  // have to click twice to set to true for some reason
-        }                          // also need to save it .. when refreshed the check goes away
-    }                              // when checked it checks all the other tasks as well 
+            setPoints(points + 1) 
+        }                          
+    }                              
 
   return (
     <div>
@@ -85,7 +94,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = u
                                     : <h4>{task.task}</h4>
                                 }
                                 <p>PTS: {task.reward}</p>
-                                <button className="delete-btn" onClick={()=>handleDelete(task._id)}>𝙓</button>
+                                <button className="delete-btn" onClick={()=>handleTaskDelete(task._id)}>𝙓</button>
                                 {/* later replace X with delete image */}
                                 <Link to={`/task-update/${task._id}`} key={task._id}><button>✎</button></Link>
                             </div>
@@ -96,6 +105,20 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = u
                 
                 }
 
+                { user.leisures?.length ?
+                
+                user.leisures.map((leisure, i) => {
+                    return (
+                            <div key={i}>
+                                <h4>{leisure.leisure}</h4>
+                                <button className="delete-btn" onClick={()=>handleLeisureDelete(leisure._id)}>𝙓</button>
+                            </div>
+                    ) 
+                })
+
+                : <h4>No Leisures</h4>
+                
+                }
 
                 </>
                 
