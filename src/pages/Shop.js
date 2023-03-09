@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 const Shop = () => {
 
-    const { user, setUser, leisures, setLeisures, points, setPoints } = useContext(LoadingContext)
+    const { user, setUser, leisures, setLeisures, points, setPoints, add, setAdd } = useContext(LoadingContext)
 
 
     const [ newLeisure, setNewLeisure ] = useState(
@@ -44,10 +44,13 @@ const Shop = () => {
         console.log(id)
     }
 
-    const handleAdd = () => {   
-        setPoints(points - 1)
-      // handling the add of a leisure into task array
-    }
+    const handleAdd = (leisureCost, leisureId) => {
+        if (add === false) {
+            setAdd(true);
+            setPoints(points - leisureCost);
+            handleDelete(leisureId);
+        }                          
+    }   
 
   return (
     <div>
@@ -73,7 +76,7 @@ const Shop = () => {
                     return (
                             <div className="list-item" key={i}>
                                 {/* <input type="checkbox"></input> */}
-                                <button className="check-btn">➕</button>
+                                <button className="check-btn" onClick={()=>handleAdd(leisure.cost, leisure._id)}>➕</button>
                                 <h4>{leisure.leisure}</h4>
                                 <p>COST: {leisure.cost}</p>
                                 <button className="delete-btn" onClick={()=>handleDelete(leisure._id)}>𝙓</button>

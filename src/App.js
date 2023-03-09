@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import Shop from './pages/Shop';
 import TaskUpdate from './pages/TaskUpdate';
 import LeisureUpdate from './pages/LeisureUpdate';
+import NotFound from './pages/NotFound';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
       <Routes>
 
         <Route path="/" element={<Home />} />
+        <Route path='*' element={<NotFound />}/>
 
         <Route element={<LoggedIn />}>
           <Route path="/dashboard" element={<Dashboard />} />

@@ -2,10 +2,12 @@ import { useContext, useState, useEffect } from "react"
 import { LoadingContext } from "../context/loading"
 import { post, get} from "../services/authService"
 import { Link } from "react-router-dom";
+import { baseUrl } from "../services/baseUrl";
+import axios from "axios";
 
 const Dashboard = () => {
 
-const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints, leisures } = useContext(LoadingContext)
+const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = useContext(LoadingContext)
 
 
     const [ newTask, setNewTask ] = useState(
@@ -53,14 +55,20 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints, leis
             })
     }
 
-    // const handleUpdate = (e) => {
-    //     //
+    // const handlePoints = () => {
+    //     axios.put(`${baseUrl}/users/update/${user._id}`)
+    //         .then(() => {
+    //             setPoints(points + 1);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         })
     // }
 
-    const handleCheck = () => {
+    const handleCheck = (taskCost) => {
         if (check === false) {
             setCheck(true);
-            setPoints(points + 1) 
+            setPoints(points + taskCost);
         }                          
     }                              
 
@@ -86,10 +94,10 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints, leis
                     return (
                             <div className="list-item" key={i}>
                                 {/* <input type="checkbox"></input> */}
-                                <button className="check-btn" onClick={handleCheck}>✓</button>
+                                <button className="check-btn" onClick={()=>handleCheck(task.reward)}>✓</button>
                                 {
                                     check === true? 
-                                    <h4 className="scratched">{task.task}</h4>  // if the checked, use class that scratches with the h4
+                                    <h4 className="scratched">{task.task}</h4>
 
                                     : <h4>{task.task}</h4>
                                 }
@@ -107,9 +115,10 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints, leis
 
                 { user.leisures?.length ?
                 
+                // conditional here to check if the leisure has been added
                 user.leisures.map((leisure, i) => {
                     return (
-                            <div key={i}>
+                            <div className='list-item' key={i}>
                                 <h4>{leisure.leisure}</h4>
                                 <button className="delete-btn" onClick={()=>handleLeisureDelete(leisure._id)}>𝙓</button>
                             </div>
