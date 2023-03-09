@@ -28,8 +28,7 @@ const Dashboard = () => {
                 let newTasks = [...tasks]
                 console.log(newTasks)
                 newTasks.unshift(results.data)
-                setTasks(newTasks)
-                setUser(results.data) // trying to get tasks to populate right away
+                setTasks(newTasks) // trying to get tasks to populate right away
             })
             .catch((err) => {
                 console.log(err)
@@ -52,8 +51,8 @@ const Dashboard = () => {
     // }
 
     const handleCheck = () => {
-        setCheck(true);
-        if (check === true) {
+        if (check === false) {
+            setCheck(true);
             setPoints(points + 1)  // have to click twice to set to true for some reason
         }                          // also need to save it .. when refreshed the check goes away
     }                              // when checked it checks all the other tasks as well 

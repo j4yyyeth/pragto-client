@@ -7,7 +7,7 @@ import { baseUrl } from "../services/baseUrl"
 
 const TaskUpdate = () => {
     const navigate = useNavigate();
-    const { user } = useContext(LoadingContext)
+    const { user, setTasks } = useContext(LoadingContext)
     const { taskId } = useParams()
 
     const [ thisTask, setThisTask ] = useState(null)
@@ -26,9 +26,13 @@ const TaskUpdate = () => {
 
       const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`${baseUrl}/todo/update/taskId`)
+        axios.put(`${baseUrl}/todo/update/${thisTask._id}`, thisTask)
             .then((updated) => {
+                console.log(updated)
                 setThisTask(updated);
+                setTasks(previous => [
+                    ...previous, thisTask
+                ])
                 navigate('/dashboard');
             })
             .catch((err) => {
