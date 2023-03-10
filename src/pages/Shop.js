@@ -48,7 +48,7 @@ const Shop = () => {
         axios.put(`${baseUrl}/users/subtract/points/${user._id}`, {points: cost, leisureId: leisureId})
             .then((results) => {
                 setRender(!render)
-                console.log(results)
+                console.log(render)
             })
             .catch((err) => {
                 console.log(err);

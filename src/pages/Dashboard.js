@@ -60,7 +60,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
         axios.put(`${baseUrl}/users/update/points/${user._id}`, {points: reward, taskId: taskId})
             .then((results) => {
                 setRender(!render)
-                console.log(results)
+                console.log(render)
             })
             .catch((err) => {
                 console.log(err);
