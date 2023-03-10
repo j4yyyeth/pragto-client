@@ -77,7 +77,7 @@ const Shop = () => {
                     <label>Leisure</label>
                     <input type="text" name="leisure" required={true} onChange={handleChange}></input>
                     <label>Cost</label>
-                    <input type="number" min="0" name="cost" required={true} onChange={handleChange}></input>
+                    <input type="number" min="1" name="cost" required={true} onChange={handleChange}></input>
                     <button type="submit">Add</button>
                 </div>
             </form>
@@ -89,12 +89,16 @@ const Shop = () => {
                 user.leisures.map((leisure, i) => {
                     return (
                             <div className="list-item" key={i}>
-                                {/* <input type="checkbox"></input> */}
                                 <button className="check-btn" onClick={()=>handleAdd(leisure.cost, leisure._id)}>➕</button>
-                                <h4>{leisure.leisure}</h4>
+                                {
+                                    leisure.added === true? 
+                                    <p>Added</p>
+
+                                    : 
+                                    <h4>{leisure.leisure}</h4>
+                                }
                                 <p>COST: {leisure.cost}</p>
                                 <button className="delete-btn" onClick={()=>handleDelete(leisure._id)}>𝙓</button>
-                                {/* later replace X with delete image */}
                                 <Link to={`/leisure-update/${leisure._id}`} key={leisure._id}><button>✎</button></Link>
                             </div>
                     ) 

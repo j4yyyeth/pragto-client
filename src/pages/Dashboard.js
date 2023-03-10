@@ -86,7 +86,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                     <label>Task</label>
                     <input type="text" name="task" value={newTask.task} required={true} onChange={handleChange}></input>
                     <label>Points</label>
-                    <input type="number" name="reward" min='0' value={newTask.reward} required={true} onChange={handleChange}></input>
+                    <input type="number" name="reward" min='1' value={newTask.reward} required={true} onChange={handleChange}></input>
                     <button type="submit">Add</button>
                 </div>
             </form>
@@ -99,17 +99,15 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                 user.tasks.map((task, i) => {
                     return (
                             <div className="list-item" key={i}>
-                                {/* <input type="checkbox"></input> */}
                                 <button className="check-btn" onClick={()=>handleCheck(task.reward, task._id)}>✓</button>
                                 { 
-                                    task.done === true? 
+                                    task.done === true?  
                                     <h4 className="scratched">{task.task}</h4>
 
                                     : <h4>{task.task}</h4>
                                 }
                                 <p>PTS: {task.reward}</p>
                                 <button className="delete-btn" onClick={()=>handleTaskDelete(task._id)}>𝙓</button>
-                                {/* later replace X with delete image */}
                                 <Link to={`/task-update/${task._id}`} key={task._id}><button>✎</button></Link>
                             </div>
                     ) 
@@ -121,14 +119,21 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
 
                 { user.leisures?.length ?
                 
-                // conditional here to check if the leisure has been added
                 user.leisures.map((leisure, i) => {
                     return (
+                        <>
+                        {
+                            leisure.added === true? 
                             <div className='list-item' key={i}>
                                 <h4>{leisure.leisure}</h4>
                                 <button className="delete-btn" onClick={()=>handleLeisureDelete(leisure._id)}>𝙓</button>
                             </div>
-                    ) 
+
+                            :
+                            <></>
+                        }
+                        </>
+                    )
                 })
 
                 : <h4>No Leisures</h4>
