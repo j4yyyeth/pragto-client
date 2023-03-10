@@ -7,7 +7,7 @@ import { baseUrl } from "../services/baseUrl"
 
 const Shop = () => {
 
-    const { user, setUser, leisures, setLeisures, points, setPoints, add, setAdd, render, setRender } = useContext(LoadingContext)
+    const { user, setUser, leisures, setLeisures, setPoints, add, setAdd, render, setRender } = useContext(LoadingContext)
 
 
     const [ newLeisure, setNewLeisure ] = useState(
@@ -29,9 +29,7 @@ const Shop = () => {
                 let newLeisures = [...leisures]
                 newLeisures.unshift(results.data)
                 setLeisures(newLeisures)
-
-                console.log(user)
-
+                setNewLeisure({leisure: "", cost: ""})
             })
             .catch((err) => {
                 console.log(err)
@@ -46,15 +44,27 @@ const Shop = () => {
         console.log(id)
     }
 
-    const handlePoints = (cost, taskId) => {
-        // 
+    const handlePoints = (cost, leisureId) => {
+        axios.put(`${baseUrl}/users/subtract/points/${user._id}`, {points: cost, leisureId: leisureId})
+            .then((results) => {
+                setRender(!render)
+                console.log(results)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
-    const handleAdd = () => {
-        //
+    const handleAdd = (leisureCost, leisureId) => {
+        if (add === false) {
+            setAdd(true);                 
+             setPoints(leisureCost);
+             
+            handlePoints(leisureCost, leisureId)
+        }
     }
 
-  return (
+  return ( 
     <div className="shop">
         <div className="shop-text">
             <h3>Welcome to the Shop!</h3>
@@ -80,7 +90,7 @@ const Shop = () => {
                     return (
                             <div className="list-item" key={i}>
                                 {/* <input type="checkbox"></input> */}
-                                <button className="check-btn">➕</button>  {/* onClick={()=>handleAdd(leisure.cost, leisure._id)} */}
+                                <button className="check-btn" onClick={()=>handleAdd(leisure.cost, leisure._id)}>➕</button>
                                 <h4>{leisure.leisure}</h4>
                                 <p>COST: {leisure.cost}</p>
                                 <button className="delete-btn" onClick={()=>handleDelete(leisure._id)}>𝙓</button>

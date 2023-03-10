@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react"
+import { useContext, useState } from "react"
 import { LoadingContext } from "../context/loading"
 import { post, get} from "../services/authService"
 import { Link } from "react-router-dom";
@@ -101,7 +101,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                             <div className="list-item" key={i}>
                                 {/* <input type="checkbox"></input> */}
                                 <button className="check-btn" onClick={()=>handleCheck(task.reward, task._id)}>✓</button>
-                                {   // {task.done} === true? // this will make sure a specific task is done or not 
+                                { 
                                     task.done === true? 
                                     <h4 className="scratched">{task.task}</h4>
 
