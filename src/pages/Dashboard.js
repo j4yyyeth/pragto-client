@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Dashboard = () => {
 
-const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints, setRender, render } = useContext(LoadingContext)
+const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, render } = useContext(LoadingContext)
 
 
     const [ newTask, setNewTask ] = useState(
@@ -67,7 +67,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints, setR
             })
     }
 
-    const handleCheck =  (taskCost, taskId) => { // if task model done = false, set it to true, and if true, scratch out task
+    const handleCheck =  (taskCost, taskId) => {
         if (check === false) {
             setCheck(true);                 
              setPoints(taskCost);
@@ -75,17 +75,10 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints, setR
             handlePoints(taskCost, taskId)
            
         }
-        
-        // if (tasks.done === false) {
-        //     setCheck(true);
-        //      or set the tasks done to true
-    
-        //     setPoints(userPoints + taskCost);
-        // }
     }                              
 
   return (
-    <div>
+    <div className="dash">
         <h1>My Dashboard</h1>
         <div className="dashboard-block">
             <form onSubmit={handleSubmit}>
@@ -100,8 +93,6 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints, setR
             { user &&
 
                 <>
-                {user.points ? <><p>State Points: {points}</p> <p>Users Points: {user.points}</p></> : <p>0</p>} 
-                {/* need a way to set the state of points to the users points */}
 
 
                 { user.tasks?.length ?

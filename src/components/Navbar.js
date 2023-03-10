@@ -16,7 +16,7 @@ const Navbar = () => {
 
     return (
         <nav>
-        <Link to={'/'}>Pragto</Link> {/* <img className="logo" src={require('../logo.png')} alt="logo" /> */}
+        <span><Link to={'/'}><img className="logo" src={require('../logo.png')} alt="logo" /></Link></span>
             {
                 getToken() ? 
                 <>

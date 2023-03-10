@@ -2,7 +2,8 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(203, 203, 203);
+    font-family: 'Barlow', sans-serif;
 }
 
 nav {
@@ -13,35 +14,49 @@ nav {
     justify-content: flex-start;
     align-items: center;
     gap: 45px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
-a {
+nav a {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 18px;
     text-transform: uppercase;
     text-decoration: none;
-    color: #00539CFF;
+    color: rgb(239, 143, 32);
     padding: 20px 0px;
     margin: 0px 20px;
     display: inline-block;
     position: relative;
-    opacity: 0.75;
 }
 
-a:before {
+nav a:before {
     transition: 300ms;
     height: 5px;
     content: "";
     position: absolute;
-    background-color: #002660;
+    background-color: rgb(244, 156, 54);
     width: 0%;
     bottom: 10px;
 }
 
-a:hover {
-    color: #002660;
+nav span a {
+    padding: 0px 0px;
+    margin: 0px 0px;
+    /* display: inline-block;
+    position: relative; */
+}
+
+nav span a:before {
+    height: 0px;
+    position: absolute;
+    width: 0%;
+    bottom: 0px;
+}
+
+span a:hover:before {
+    color: rgb(0, 0, 0);
     opacity: 1;
+    width: 0%;
 }
 
 a:hover:before {
@@ -134,4 +149,161 @@ a:hover:before {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+  }
+
+  .signup-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f6f6f6;
+    margin-top: 150px;
+  }
+  
+  .signup-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .signup-form input[type="email"],
+  .signup-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .signup-form button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(239, 143, 32);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .signup-form button[type="submit"]:hover {
+    background-color: rgb(238, 149, 47);
+  }
+  
+  .login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f6f6f6;
+    margin-top: 150px;
+  }
+  
+  .login-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .login-form input[type="email"],
+  .login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login-form button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(238, 149, 47);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-form button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+
+  main {
+    padding: 25px;
+  }
+
+  a {
+    color: rgb(239, 143, 32);
+    font-size: 20px;
+    font-weight: 900;
+    text-decoration: none;
+  }
+  
+  .hero-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+  }
+  
+  .hero-text {
+    flex-basis: 50%;
+    padding-right: 50px;
+  }
+  
+  .hero-text h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.2s ease-out;
+  }
+  
+  .button:hover {
+    background-color: #3e8e41;
+  }
+  
+  .hero-image {
+    flex-basis: 45%;
+    margin-bottom: 20px;
+  }
+
+  .hero-image img {
+    margin-top: 100px;
+    width: 550px;
+    height: auto;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-out;
+  }
+  
+  .hero-image img:hover {
+    transform: scale(1.1);
+  }
+
+  .dash {
+    padding: 10px;
+  }
+
+  .shop {
+    padding: 10px;
+  }
+
+  .shop-text {
+    font-size: large;
   }
