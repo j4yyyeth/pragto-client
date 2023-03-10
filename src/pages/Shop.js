@@ -78,7 +78,7 @@ const Shop = () => {
                     <input type="text" name="leisure" required={true} onChange={handleChange}></input>
                     <label>Cost</label>
                     <input type="number" min="1" name="cost" required={true} onChange={handleChange}></input>
-                    <button type="submit">Add</button>
+                    <button type="submit" className="add-task-btn">Add</button>
                 </div>
             </form>
             { user &&
