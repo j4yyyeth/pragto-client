@@ -37,7 +37,7 @@ const LoadingProvider = ({ children }) => {
       })
     }
 
-    const getPoints = () => {
+    const getPoints = () => { 
       get('/users/points')
       .then((results) => {
         setPoints(results.data)

@@ -34,7 +34,6 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = u
             })
     }
 
-
     const handleTaskDelete = (id) => {
         get(`/todo/delete/${id}`)
             .then((results) => {
@@ -55,21 +54,22 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = u
             })
     }
 
-    // const handlePoints = () => {
-    //     axios.put(`${baseUrl}/users/update/${user._id}`)
-    //         .then(() => {
-    //             setPoints(points + 1);
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         })
-    // }
+    const handlePoints = () => {
+        axios.put(`${baseUrl}/users/update/${user._id}`)
+            .then((results) => {
+                setPoints(points + 1);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
-    const handleCheck = (taskCost) => {
+    const handleCheck = (taskCost, userPoints) => { // if task model done = false, set it to true, and if true, scratch out task
         if (check === false) {
-            setCheck(true);
-            setPoints(points + taskCost);
-        }                          
+            setCheck(true);                       
+            setPoints(userPoints + taskCost);
+            console.log(userPoints + taskCost);
+        }                        
     }                              
 
   return (
@@ -86,15 +86,18 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = u
                 </div>
             </form>
             { user &&
+
                 <>
+                {user.points ? <><p>{points}</p> <p>{user.points}</p></> : <p>0</p>} 
+                {/* need a way to set the state of points to the users points */}
+
 
                 { user.tasks?.length ?
-                
                 user.tasks.map((task, i) => {
                     return (
                             <div className="list-item" key={i}>
                                 {/* <input type="checkbox"></input> */}
-                                <button className="check-btn" onClick={()=>handleCheck(task.reward)}>✓</button>
+                                <button className="check-btn" onClick={()=>handleCheck(task.reward, user.points)}>✓</button>
                                 {
                                     check === true? 
                                     <h4 className="scratched">{task.task}</h4>

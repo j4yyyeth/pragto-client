@@ -12,7 +12,7 @@ const Navbar = () => {
 
     const { logout } = useContext(AuthContext);
 
-    const { points } = useContext(LoadingContext);
+    const { user } = useContext(LoadingContext);
 
     return (
         <nav>
@@ -25,7 +25,12 @@ const Navbar = () => {
                     <Link onClick={logout}>Logout</Link>
                     <div className="points-nav">
                         <img className="coins-img" src={require('../coins.png')} alt="coins" />
-                        <h3>{points}</h3>
+                        {
+                            user ? 
+                            <h3>{user.points}</h3>
+
+                            : <p>0</p>
+                        }
                     </div>
                 </>
 

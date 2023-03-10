@@ -45,10 +45,11 @@ const Shop = () => {
     }
 
     const handleAdd = (leisureCost, leisureId) => {
+        // if leisureCost < points then preform below conditional
         if (add === false) {
-            setAdd(true);
-            setPoints(points - leisureCost);
-            handleDelete(leisureId);
+            setAdd(true);                      // may want to make a handle push function where
+            setPoints(points - leisureCost);  // I'm pushing these leisures into a new array which may have to be new in the User model  
+            handleDelete(leisureId);          // which will be displayed on dashboard page                  
         }                          
     }   
 
