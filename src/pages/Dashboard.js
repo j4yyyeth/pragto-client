@@ -91,7 +91,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                     <input type="text" name="task" value={newTask.task} required={true} onChange={handleChange}></input>
                     <label>Reward</label>
                     <input type="number" name="reward" min='1' value={newTask.reward} required={true} onChange={handleChange}></input>
-                    <button type="submit">Add</button>
+                    <button type="submit" className="add-task-btn">Add</button>
                 </div>
             </form>
             { user &&

@@ -332,3 +332,18 @@ a:hover:before {
     font-size: large;
   }
 
+
+  .add-task-btn {
+    background-color: rgb(238, 149, 47);
+    border: none;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .add-task-btn:hover {
+    background-color: #f26d21;
+  }
