@@ -58,7 +58,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
 
     const handlePoints = (reward, taskId) => {
         axios.put(`${baseUrl}/users/update/points/${user._id}`, {points: reward, taskId: taskId})
-            .then((results) => {
+            .then(() => {
                 setRender(!render)
                 console.log(render)
             })
@@ -132,7 +132,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                         {
                             leisure.added === true? 
                             <div className='list-item' key={i}>
-                                <h4>{leisure.leisure}</h4>
+                                <h4>LEISURE: {leisure.leisure}</h4>
                                 <button className="delete-btn" onClick={()=>handleLeisureDelete(leisure._id)}>𝙓</button>
                             </div>
 
