@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Dashboard = () => {
 
-const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = useContext(LoadingContext)
+const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints, setRender, render } = useContext(LoadingContext)
 
 
     const [ newTask, setNewTask ] = useState(
@@ -28,11 +28,13 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = u
                 let newTasks = [...tasks]
                 newTasks.unshift(results.data)
                 setTasks(newTasks)
+                setNewTask({task: "", reward: ""})
             })
             .catch((err) => {
                 console.log(err)
             })
     }
+
 
     const handleTaskDelete = (id) => {
         get(`/todo/delete/${id}`)
@@ -54,22 +56,32 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = u
             })
     }
 
-    const handlePoints = () => {
-        axios.put(`${baseUrl}/users/update/${user._id}`)
+    const handlePoints = (reward, taskId) => {
+        axios.put(`${baseUrl}/users/update/points/${user._id}`, {points: reward, taskId: taskId})
             .then((results) => {
-                setPoints(points + 1);
+                setRender(!render)
+                console.log(results)
             })
             .catch((err) => {
                 console.log(err);
             })
     }
 
-    const handleCheck = (taskCost, userPoints) => { // if task model done = false, set it to true, and if true, scratch out task
+    const handleCheck =  (taskCost, taskId) => { // if task model done = false, set it to true, and if true, scratch out task
         if (check === false) {
-            setCheck(true);                       
-            setPoints(userPoints + taskCost);
-            console.log(userPoints + taskCost);
-        }                        
+            setCheck(true);                 
+             setPoints(taskCost);
+             
+            handlePoints(taskCost, taskId)
+           
+        }
+        
+        // if (tasks.done === false) {
+        //     setCheck(true);
+        //      or set the tasks done to true
+    
+        //     setPoints(userPoints + taskCost);
+        // }
     }                              
 
   return (
@@ -79,16 +91,16 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = u
             <form onSubmit={handleSubmit}>
                 <div className="input-button">
                     <label>Task</label>
-                    <input type="text" name="task" required={true} onChange={handleChange}></input>
+                    <input type="text" name="task" value={newTask.task} required={true} onChange={handleChange}></input>
                     <label>Points</label>
-                    <input type="number" min='0' name="reward" required={true} onChange={handleChange}></input>
+                    <input type="number" name="reward" min='0' value={newTask.reward} required={true} onChange={handleChange}></input>
                     <button type="submit">Add</button>
                 </div>
             </form>
             { user &&
 
                 <>
-                {user.points ? <><p>{points}</p> <p>{user.points}</p></> : <p>0</p>} 
+                {user.points ? <><p>State Points: {points}</p> <p>Users Points: {user.points}</p></> : <p>0</p>} 
                 {/* need a way to set the state of points to the users points */}
 
 
@@ -97,9 +109,9 @@ const { user, setUser, tasks, setTasks, check, setCheck, points, setPoints } = u
                     return (
                             <div className="list-item" key={i}>
                                 {/* <input type="checkbox"></input> */}
-                                <button className="check-btn" onClick={()=>handleCheck(task.reward, user.points)}>✓</button>
-                                {
-                                    check === true? 
+                                <button className="check-btn" onClick={()=>handleCheck(task.reward, task._id)}>✓</button>
+                                {   // {task.done} === true? // this will make sure a specific task is done or not 
+                                    task.done === true? 
                                     <h4 className="scratched">{task.task}</h4>
 
                                     : <h4>{task.task}</h4>
