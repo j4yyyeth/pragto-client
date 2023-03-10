@@ -79,13 +79,17 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
 
   return (
     <div className="dash">
-        <h1>My Dashboard</h1>
+        <div className="shop-text">
+            <h3>Welcome to your Dashboard!</h3>
+            <p>Here you can create tasks</p>
+            <p>When you complete a task, you earn!</p>
+        </div>
         <div className="dashboard-block">
             <form onSubmit={handleSubmit}>
                 <div className="input-button">
                     <label>Task</label>
                     <input type="text" name="task" value={newTask.task} required={true} onChange={handleChange}></input>
-                    <label>Points</label>
+                    <label>Reward</label>
                     <input type="number" name="reward" min='1' value={newTask.reward} required={true} onChange={handleChange}></input>
                     <button type="submit">Add</button>
                 </div>
@@ -99,24 +103,27 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                 user.tasks.map((task, i) => {
                     return (
                             <div className="list-item" key={i}>
-                                <button className="check-btn" onClick={()=>handleCheck(task.reward, task._id)}>✓</button>
-                                { 
-                                    task.done === true?  
-                                    <h4 className="scratched">{task.task}</h4>
+                                <div className="list-btns">
+                                    <button className="check-btn" onClick={()=>handleCheck(task.reward, task._id)}>✓</button>
+                                    <button className="delete-btn" onClick={()=>handleTaskDelete(task._id)}>𝙓</button>
+                                    <Link to={`/task-update/${task._id}`} key={task._id}><button className="edit-btn">✎</button></Link>
+                                </div>
+                                <div className="list-txt">
+                                    { 
+                                        task.done === true?  
+                                        <h4 className="scratched">{task.task}</h4>
 
-                                    : <h4>{task.task}</h4>
-                                }
-                                <p>PTS: {task.reward}</p>
-                                <button className="delete-btn" onClick={()=>handleTaskDelete(task._id)}>𝙓</button>
-                                <Link to={`/task-update/${task._id}`} key={task._id}><button>✎</button></Link>
+                                        : <h4>{task.task}</h4>
+                                    }
+                                <p>PTS: <b>{task.reward}</b></p>
+                                </div>
                             </div>
                     ) 
                 })
 
-                : <h4>No tasks...</h4>
-                
+                : <h4>Let's get stuff done!</h4>
                 }
-
+                
                 { user.leisures?.length ?
                 
                 user.leisures.map((leisure, i) => {
@@ -136,7 +143,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                     )
                 })
 
-                : <h4>No Leisures</h4>
+                : <></>
                 
                 }
 

@@ -65,13 +65,13 @@ const Shop = () => {
     }
 
   return ( 
-    <div className="shop">
+    <div className="dash">
         <div className="shop-text">
             <h3>Welcome to the Shop!</h3>
             <p>Here you can spend your hard earned coin on leisures ...</p>
             <p>And the best part is that <b>you</b> create them!</p>
         </div>
-        <div className="Shop-block">
+        <div className="dashboard-block">
             <form onSubmit={handleSubmit}>
                 <div className="input-button">
                     <label>Leisure</label>
@@ -88,23 +88,25 @@ const Shop = () => {
                 
                 user.leisures.map((leisure, i) => {
                     return (
-                            <div className="list-item" key={i}>
-                                <button className="check-btn" onClick={()=>handleAdd(leisure.cost, leisure._id)}>➕</button>
-                                {
-                                    leisure.added === true? 
-                                    <p>Added</p>
+                        leisure.added === true?
+                                    <></>
 
-                                    : 
-                                    <h4>{leisure.leisure}</h4>
-                                }
-                                <p>COST: {leisure.cost}</p>
-                                <button className="delete-btn" onClick={()=>handleDelete(leisure._id)}>𝙓</button>
-                                <Link to={`/leisure-update/${leisure._id}`} key={leisure._id}><button>✎</button></Link>
+                                    :
+                            <div className="list-item" key={i}>
+                                <div className="list-btns">
+                                    <button className="check-btn" onClick={()=>handleAdd(leisure.cost, leisure._id)}>➕</button>
+                                    <button className="delete-btn" onClick={()=>handleDelete(leisure._id)}>𝙓</button>
+                                    <Link to={`/leisure-update/${leisure._id}`} key={leisure._id}><button className="edit-btn">✎</button></Link>
+                                </div>
+                                    <div className="list-txt">
+                                        <h4>{leisure.leisure}</h4>
+                                        <p>COST: <b>{leisure.cost}</b></p>
+                                    </div>
                             </div>
                     ) 
                 })
 
-                : <h4>No Leisures...</h4>
+                : <h4>Give yourself a break!</h4>
                 
                 }
 
