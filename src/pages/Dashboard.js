@@ -101,6 +101,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
 
                 { user.tasks?.length ?
                 user.tasks.map((task, i) => {
+                    console.log(task.done)
                     return (
                             <div className="list-item" key={i}>
                                 <div className="list-btns">

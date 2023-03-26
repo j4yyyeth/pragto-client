@@ -13,9 +13,11 @@ const TaskUpdate = () => {
     const [ thisTask, setThisTask ] = useState(null)
 
     useEffect(() => {
-        let task = user.tasks.find((task) => task._id === taskId)
-        setThisTask(task)
-    }, [])
+        if (user && user.tasks) {
+            let task = user.tasks.find((task) => task._id === taskId)
+            setThisTask(task)
+        }
+    }, [user, taskId]) 
 
     const handleChange = (e) => {
         setThisTask((recent) => ({...recent, [e.target.name]:e.target.value}));
