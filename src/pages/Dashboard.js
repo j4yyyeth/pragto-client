@@ -60,7 +60,8 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
         axios.put(`${baseUrl}/users/update/points/${user._id}`, {points: reward, taskId: taskId})
             .then(() => {
                 setRender(!render)
-                console.log(render)
+                setCheck(false);
+                console.log("This is the render:", render)
             })
             .catch((err) => {
                 console.log(err);
@@ -68,6 +69,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
     }
 
     const handleCheck =  (taskCost, taskId) => {
+        console.log("This is the check:", check);
         if (check === false) {
             setCheck(true);                 
              setPoints(taskCost);
@@ -129,10 +131,10 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                 
                 user.leisures.map((leisure, i) => {
                     return (
-                        <>
+                        <div key={i}>
                         {
                             leisure.added === true? 
-                            <div className='list-item' key={i}>
+                            <div className='list-item' key={leisure._id}>
                                 <h4>LEISURE: {leisure.leisure}</h4>
                                 <button className="delete-btn" onClick={()=>handleLeisureDelete(leisure._id)}>𝙓</button>
                             </div>
@@ -140,7 +142,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                             :
                             <></>
                         }
-                        </>
+                        </div>
                     )
                 })
 

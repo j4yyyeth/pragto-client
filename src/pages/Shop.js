@@ -48,6 +48,7 @@ const Shop = () => {
         axios.put(`${baseUrl}/users/subtract/points/${user._id}`, {points: cost, leisureId: leisureId})
             .then(() => {
                 setRender(!render)
+                setAdd(false);
                 console.log(render)
             })
             .catch((err) => {
@@ -75,9 +76,9 @@ const Shop = () => {
             <form onSubmit={handleSubmit}>
                 <div className="input-button">
                     <label>Leisure</label>
-                    <input type="text" name="leisure" required={true} onChange={handleChange}></input>
+                    <input type="text" name="leisure" value={newLeisure.leisure} required={true} onChange={handleChange}></input>
                     <label>Cost</label>
-                    <input type="number" min="1" name="cost" required={true} onChange={handleChange}></input>
+                    <input type="number" min="1" name="cost" value={newLeisure.cost} required={true} onChange={handleChange}></input>
                     <button type="submit" className="add-task-btn">Add</button>
                 </div>
             </form>
@@ -88,11 +89,12 @@ const Shop = () => {
                 
                 user.leisures.map((leisure, i) => {
                     return (
-                        leisure.added === true?
+                        <div key={i}>
+                        {leisure.added === true?
                                     <></>
 
                                     :
-                            <div className="list-item" key={i}>
+                            <div className="list-item" key={leisure._id}>
                                 <div className="list-btns">
                                     <button className="check-btn" onClick={()=>handleAdd(leisure.cost, leisure._id)}>➕</button>
                                     <button className="delete-btn" onClick={()=>handleDelete(leisure._id)}>𝙓</button>
@@ -103,6 +105,8 @@ const Shop = () => {
                                         <p>COST: <b>{leisure.cost}</b></p>
                                     </div>
                             </div>
+                        }
+                        </div>
                     ) 
                 })
 
