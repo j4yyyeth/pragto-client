@@ -13,9 +13,11 @@ const LeisureUpdate = () => {
     const [ thisLeisure, setThisLeisure ] = useState(null)
 
     useEffect(() => {
-        let leisure = user.leisures.find((leisure) => leisure._id === leisureId)
-        setThisLeisure(leisure)
-    }, [])
+        if (user && user.leisures) {
+            let leisure = user.leisures.find((leisure) => leisure._id === leisureId)
+            setThisLeisure(leisure)
+        }
+    }, [user, leisureId]) 
 
     const handleChange = (e) => {
         setThisLeisure((recent) => ({...recent, [e.target.name]:e.target.value}));
