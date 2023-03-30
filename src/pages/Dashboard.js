@@ -17,6 +17,8 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
         }
     )
 
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
     const handleChange = (e) => {
         setNewTask((recent) => ({...recent, [e.target.name]: e.target.value}))
     }
@@ -77,7 +79,11 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
             handlePoints(taskCost, taskId)
            
         }
-    }                              
+    }
+    
+    function toggleDropdown() {
+        setIsDropdownOpen(!isDropdownOpen);
+      }
 
   return (
     <div className="dash">
@@ -105,11 +111,15 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                 user.tasks.map((task, i) => {
                     console.log(task.done)
                     return (
-                            <div className="list-item" key={i}>
-                                <div className="list-btns">
-                                    <button className="check-btn" onClick={()=>handleCheck(task.reward, task._id)}>✓</button>
-                                    <button className="delete-btn" onClick={()=>handleTaskDelete(task._id)}>𝙓</button>
-                                    <Link to={`/task-update/${task._id}`} key={task._id}><button className="edit-btn">✎</button></Link>
+                        <>
+                        <div className="list-item" key={i}>
+                                <div className="dropdown">
+                                    <button className="btn" onClick={() => toggleDropdown()} aria-haspopup="true" aria-expanded={isDropdownOpen}>...</button>
+                                    <div className={`dropdown-menu${isDropdownOpen ? " show" : ""}`}>
+                                        <button className="dropdown-item" onClick={()=>handleCheck(task.reward, task._id)}>✓</button>
+                                        <button className="dropdown-item" onClick={()=>handleTaskDelete(task._id)}>𝙓</button>
+                                        <Link className="dropdown-item" to={`/task-update/${task._id}`} key={task._id}><button>✎</button></Link>
+                                    </div>
                                 </div>
                                 <div className="list-txt">
                                     { 
@@ -120,7 +130,8 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                                     }
                                 <p>PTS: <b>{task.reward}</b></p>
                                 </div>
-                            </div>
+                        </div>
+                        </>
                     ) 
                 })
 
