@@ -14,10 +14,6 @@ const LoadingProvider = ({ children }) => {
     const [add, setAdd] = useState(false);
     const [render, setRender] = useState(false)
 
-    // if (points < 0) {
-    //   setPoints(0);
-    // }
-
     const getTasks = () => {
       get('/todo')
       .then((results) => {
@@ -38,18 +34,18 @@ const LoadingProvider = ({ children }) => {
       })
     }
 
-    const getPoints = () => { 
-      get('/users/points')
-      .then((results) => {
-        setPoints(results.data)
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-    }
+    // const getPoints = () => { 
+    //   get('/users/points')
+    //   .then((results) => {
+    //     setPoints(results.data)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   })
+    // }
 
     return (
-        <LoadingContext.Provider value={{render, setRender, user, setUser, isLoading, setIsLoading, getTasks, tasks, setTasks, getLeisures, leisures, setLeisures, getPoints, points, setPoints, check, setCheck, add, setAdd}}>
+        <LoadingContext.Provider value={{render, setRender, user, setUser, isLoading, setIsLoading, getTasks, tasks, setTasks, getLeisures, leisures, setLeisures, points, setPoints, check, setCheck, add, setAdd}}>
           {children}
         </LoadingContext.Provider>
       );

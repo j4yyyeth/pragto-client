@@ -111,14 +111,16 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                 user.tasks.map((task, i) => {
                     console.log(task.done)
                     return (
-                        <>
                         <div className="list-item" key={i}>
-                                <div className="dropdown">
-                                    <button className="btn" onClick={() => toggleDropdown()} aria-haspopup="true" aria-expanded={isDropdownOpen}>...</button>
-                                    <div className={`dropdown-menu${isDropdownOpen ? " show" : ""}`}>
-                                        <button className="dropdown-item" onClick={()=>handleCheck(task.reward, task._id)}>✓</button>
-                                        <button className="dropdown-item" onClick={()=>handleTaskDelete(task._id)}>𝙓</button>
-                                        <Link className="dropdown-item" to={`/task-update/${task._id}`} key={task._id}><button>✎</button></Link>
+                                <div className="drop-wrap">
+                                    <p>PTS: <b>{task.reward}</b></p>
+                                    <div className="dropdown">
+                                        <button className="btn" onClick={() => toggleDropdown()} aria-haspopup="true" aria-expanded={isDropdownOpen}>⋯</button>
+                                        <div className={`dropdown-menu${isDropdownOpen ? " show" : ""}`}>
+                                            <button className="dropdown-item check-btn" onClick={()=>handleCheck(task.reward, task._id)}>✓</button>
+                                            <button className="dropdown-item delete-btn" onClick={()=>handleTaskDelete(task._id)}>𝙓</button>
+                                            <Link className="dropdown-item edit-btn" to={`/task-update/${task._id}`} key={task._id}>✎</Link>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="list-txt">
@@ -128,10 +130,8 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
 
                                         : <h4>{task.task}</h4>
                                     }
-                                <p>PTS: <b>{task.reward}</b></p>
                                 </div>
                         </div>
-                        </>
                     ) 
                 })
 

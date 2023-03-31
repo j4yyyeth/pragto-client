@@ -7,7 +7,7 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
 
-    const { setIsLoading, setUser, setMessage, user, tasks, leisures, getPoints , render} = useContext(LoadingContext)
+    const { setIsLoading, setUser, setMessage, user, tasks, leisures, render} = useContext(LoadingContext)
 
     const navigate = useNavigate();
 
@@ -53,7 +53,6 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         authenticateUser();
-        getPoints()
       }, [tasks, leisures, render]);
 
 
