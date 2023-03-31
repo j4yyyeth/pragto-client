@@ -397,4 +397,12 @@ a:hover:before {
   color: black;
 }
 
+.plus-btn {
+  font-size: 21px;
+}
+
+.plus-btn:hover {
+  color: #2bdb31;
+}
+
   

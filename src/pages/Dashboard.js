@@ -17,7 +17,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
         }
     )
 
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [taskDropdownStates, setTaskDropdownStates] = useState([]);
 
     const handleChange = (e) => {
         setNewTask((recent) => ({...recent, [e.target.name]: e.target.value}))
@@ -81,8 +81,10 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
         }
     }
     
-    function toggleDropdown() {
-        setIsDropdownOpen(!isDropdownOpen);
+    function toggleDropdown(i) {
+        const newTaskDropdownStates = [...taskDropdownStates];
+        newTaskDropdownStates[i] = !newTaskDropdownStates[i];
+        setTaskDropdownStates(newTaskDropdownStates);
       }
 
   return (
@@ -115,8 +117,8 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                                 <div className="drop-wrap">
                                     <p>PTS: <b>{task.reward}</b></p>
                                     <div className="dropdown">
-                                        <button className="btn" onClick={() => toggleDropdown()} aria-haspopup="true" aria-expanded={isDropdownOpen}>⋯</button>
-                                        <div className={`dropdown-menu${isDropdownOpen ? " show" : ""}`}>
+                                        <button className="btn" onClick={() => toggleDropdown(i)} aria-haspopup="true" aria-expanded={taskDropdownStates[i]}>⋯</button>
+                                        <div className={`dropdown-menu${taskDropdownStates[i] ? " show" : ""}`}>
                                             <button className="dropdown-item check-btn" onClick={()=>handleCheck(task.reward, task._id)}>✓</button>
                                             <button className="dropdown-item delete-btn" onClick={()=>handleTaskDelete(task._id)}>𝙓</button>
                                             <Link className="dropdown-item edit-btn" to={`/task-update/${task._id}`} key={task._id}>✎</Link>

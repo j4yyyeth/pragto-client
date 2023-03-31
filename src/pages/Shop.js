@@ -17,6 +17,8 @@ const Shop = () => {
         }
     )
 
+    const [leisureDropdownStates, setLeisureDropdownStates] = useState([]);
+
     const handleChange = (e) => {
         setNewLeisure((recent) => ({...recent, [e.target.name]: e.target.value}))
     }
@@ -65,6 +67,12 @@ const Shop = () => {
         }
     }
 
+    function toggleDropdown(i) {
+        const newLeisureDropdownStates = [...leisureDropdownStates];
+        newLeisureDropdownStates[i] = !newLeisureDropdownStates[i];
+        setLeisureDropdownStates(newLeisureDropdownStates);
+      }
+
   return ( 
     <div className="dash">
         <div className="shop-text">
@@ -95,14 +103,19 @@ const Shop = () => {
 
                                     :
                             <div className="list-item" key={leisure._id}>
-                                <div className="list-btns">
-                                    <button className="check-btn" onClick={()=>handleAdd(leisure.cost, leisure._id)}>➕</button>
-                                    <button className="delete-btn" onClick={()=>handleDelete(leisure._id)}>𝙓</button>
-                                    <Link to={`/leisure-update/${leisure._id}`} key={leisure._id}><button className="edit-btn">✎</button></Link>
+                                <div className="drop-wrap">
+                                    <p>COST: <b>{leisure.cost}</b></p>
+                                    <div className="dropdown">
+                                        <button className="btn" onClick={() => toggleDropdown(i)} aria-haspopup="true" aria-expanded={leisureDropdownStates[i]}>⋯</button>
+                                        <div className={`dropdown-menu${leisureDropdownStates[i] ? " show" : ""}`}>
+                                            <button className="dropdown-item plus-btn" onClick={()=>handleAdd(leisure.cost, leisure._id)}>+</button>
+                                            <button className="dropdown-item delete-btn" onClick={()=>handleDelete(leisure._id)}>𝙓</button>
+                                            <Link className="dropdown-item edit-btn" to={`/leisure-update/${leisure._id}`} key={leisure._id}>✎</Link>
+                                        </div>
+                                    </div>
                                 </div>
                                     <div className="list-txt">
                                         <h4>{leisure.leisure}</h4>
-                                        <p>COST: <b>{leisure.cost}</b></p>
                                     </div>
                             </div>
                         }
