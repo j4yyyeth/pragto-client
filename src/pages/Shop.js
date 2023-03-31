@@ -38,10 +38,11 @@ const Shop = () => {
             })
     }
 
-    const handleDelete = (id) => {
+    const handleDelete = (id, index) => {
         get(`/leisure/delete/${id}`)
             .then((results) => {
                 setUser(results.data)
+                toggleDropdown(index)
             })
         console.log(id)
     }
@@ -109,7 +110,7 @@ const Shop = () => {
                                         <button className="btn" onClick={() => toggleDropdown(i)} aria-haspopup="true" aria-expanded={leisureDropdownStates[i]}>⋯</button>
                                         <div className={`dropdown-menu${leisureDropdownStates[i] ? " show" : ""}`}>
                                             <button className="dropdown-item plus-btn" onClick={()=>handleAdd(leisure.cost, leisure._id)}>+</button>
-                                            <button className="dropdown-item delete-btn" onClick={()=>handleDelete(leisure._id)}>𝙓</button>
+                                            <button className="dropdown-item delete-btn" onClick={()=>handleDelete(leisure._id, i)}>𝙓</button>
                                             <Link className="dropdown-item edit-btn" to={`/leisure-update/${leisure._id}`} key={leisure._id}>✎</Link>
                                         </div>
                                     </div>

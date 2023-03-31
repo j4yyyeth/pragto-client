@@ -38,10 +38,11 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
     }
 
 
-    const handleTaskDelete = (id) => {
+    const handleTaskDelete = (id, index) => {
         get(`/todo/delete/${id}`)
             .then((results) => {
                 setUser(results.data)
+                toggleDropdown(index)
             })
             .catch((err) => {
                 console.log(err)
@@ -120,7 +121,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                                         <button className="btn" onClick={() => toggleDropdown(i)} aria-haspopup="true" aria-expanded={taskDropdownStates[i]}>⋯</button>
                                         <div className={`dropdown-menu${taskDropdownStates[i] ? " show" : ""}`}>
                                             <button className="dropdown-item check-btn" onClick={()=>handleCheck(task.reward, task._id)}>✓</button>
-                                            <button className="dropdown-item delete-btn" onClick={()=>handleTaskDelete(task._id)}>𝙓</button>
+                                            <button className="dropdown-item delete-btn" onClick={()=>handleTaskDelete(task._id, i)}>𝙓</button>
                                             <Link className="dropdown-item edit-btn" to={`/task-update/${task._id}`} key={task._id}>✎</Link>
                                         </div>
                                     </div>
@@ -147,9 +148,9 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                         <div key={i}>
                         {
                             leisure.added === true? 
-                            <div className='list-item' key={leisure._id}>
-                                <h4>LEISURE: {leisure.leisure}</h4>
-                                <button className="delete-btn" onClick={()=>handleLeisureDelete(leisure._id)}>𝙓</button>
+                            <div className='list-item-leisure' key={leisure._id}>
+                                <h4>{leisure.leisure}</h4>
+                                <button className="check-btn-leisure" onClick={()=>handleLeisureDelete(leisure._id)}>✓</button>
                             </div>
 
                             :
