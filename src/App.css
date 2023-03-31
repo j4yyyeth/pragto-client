@@ -320,7 +320,6 @@ a:hover:before {
     font-size: large;
   }
 
-
   .add-task-btn {
     background-color: rgb(238, 149, 47);
     border: none;
@@ -328,11 +327,13 @@ a:hover:before {
     padding: 12px 24px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease-in-out;
+    border-radius: 25px;
   }
 
-  /* dropdown menu */
+  .add-task-btn:hover {
+    background-color: #3e8e41;
+    transition: 0.2s;
+  }
 
   .drop-wrap {
     display: flex;
@@ -354,8 +355,8 @@ a:hover:before {
   
   .btn {
     height: 30px;
-    width: 30px;
-    border-radius: 50px;
+    width: 31px;
+    border-radius: 30px;
     background-color: transparent;
     color: rgb(0, 0, 0);
     border: none;
@@ -395,7 +396,6 @@ a:hover:before {
     color: #ffffff;
     background-color: transparent;
     border: none;
-    border-radius: 12230px;
   }
   
 .dropdown-menu .dropdown-item:hover {

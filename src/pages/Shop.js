@@ -77,9 +77,8 @@ const Shop = () => {
   return ( 
     <div className="dash">
         <div className="shop-text">
-            <h3>Welcome to the Shop!</h3>
-            <p>Here you can spend your hard earned coin on leisures ...</p>
-            <p>And the best part is that <b>you</b> create them!</p>
+            <h3>Welcome to the Shop</h3>
+            <p>Create a leisure and take a break!</p>
         </div>
         <div className="dashboard-block">
             <form onSubmit={handleSubmit}>

@@ -91,9 +91,8 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
   return (
     <div className="dash">
         <div className="shop-text">
-            <h3>Welcome to your Dashboard!</h3>
-            <p>Here you can create tasks</p>
-            <p>When you complete a task, you earn!</p>
+            <h3>Welcome to your Dashboard</h3>
+            <p>Create a task and start earning!</p>
         </div>
         <div className="dashboard-block">
             <form onSubmit={handleSubmit}>
@@ -138,7 +137,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
                     ) 
                 })
 
-                : <h4>Let's get stuff done!</h4>
+                : <h4>Let's get Productive!</h4>
                 }
                 
                 { user.leisures?.length ?
