@@ -7,11 +7,11 @@ const Home = () => {
   const { user } = useContext(LoadingContext);
   return (
     <>
-      <main>
+      <div className="top">
         <section className="hero-section">
           <div className="hero-text">
-            <h1>Welcome to Pragto</h1>
-            <p>Your very own simplified to-do app, but <span className="fun">fun</span></p>
+            <h1>Pragto</h1>
+            <p>Your very own simplified to-do app, but fun and <span>rewarding</span>, <span>literally</span></p>
             {
               user ? 
 
@@ -26,7 +26,30 @@ const Home = () => {
             <img className="person-img" src={require('../person.jpg')} alt="logo" />
           </div>
         </section>
-      </main>
+      </div>
+      <div className="middle">
+        <h1>How to use</h1>
+        <div className="how-to">
+          <div className="how-to-txt">
+            <h2>Dashboard</h2>
+            <p>Create task</p>
+            <p>Earn on completion</p>
+            <p>Save or spend points on a leisure</p>
+          </div>
+          <div className="how-to-txt">
+          <h2>Shop</h2>
+          <p>Create leisure</p>
+          <p>Add to your dashboard with points</p>
+          <p>Take a break</p>
+          </div>
+        </div>
+        <div className="reminder">
+          <h2>Remember: You set the reward/cost for tasks and leisures, so don't cheat yourself</h2><span className="material-symbols-outlined">check_circle</span>
+        </div>
+      </div>
+      <footer>
+        <h3>© 2023 Pragto</h3>
+      </footer>
     </>
   )
 }

@@ -1,10 +1,21 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { LoadingContext } from "../context/loading";
 import { AuthContext } from "../context/auth.context";
 
 const Navbar = () => {
+    const [ color, setColor ] = useState(false);
 
+    const changeColor = () => {
+        if (window.scrollY >= 40) {
+            setColor(true);
+        }
+        else {
+            setColor(false);
+        }
+    }
+
+    window.addEventListener('scroll', changeColor)
 
     const getToken = () => {
         return localStorage.getItem('authToken');
@@ -15,7 +26,7 @@ const Navbar = () => {
     const { user } = useContext(LoadingContext);
 
     return (
-        <nav>
+        <nav className={color ? 'nav-color' : 'no-color'}>
         <span><Link to={'/'}><img className="logo" src={require('../logo.png')} alt="logo" /></Link></span>
             {
                 getToken() ? 
