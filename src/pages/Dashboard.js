@@ -19,6 +19,8 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
 
     const [taskDropdownStates, setTaskDropdownStates] = useState([]);
 
+    const [activeDropdown, setActiveDropdown] = useState(null);
+
     const handleChange = (e) => {
         setNewTask((recent) => ({...recent, [e.target.name]: e.target.value}))
     }
@@ -86,7 +88,14 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
         const newTaskDropdownStates = [...taskDropdownStates];
         newTaskDropdownStates[i] = !newTaskDropdownStates[i];
         setTaskDropdownStates(newTaskDropdownStates);
-      }
+
+        // update the active dropdown
+        if (activeDropdown !== null && activeDropdown !== i) {
+            newTaskDropdownStates[activeDropdown] = false;
+            setTaskDropdownStates(newTaskDropdownStates);
+        }
+        setActiveDropdown(newTaskDropdownStates[i] ? i : null);
+    }
 
   return (
     <div className="dash">

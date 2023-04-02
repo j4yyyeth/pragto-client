@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react"
+import { useContext, useState } from "react"
 import { LoadingContext } from "../context/loading"
 import { post, get } from "../services/authService"
 import { Link } from "react-router-dom"
@@ -17,10 +17,12 @@ const Shop = () => {
         }
     )
 
-    const [showNotEnoughMessage, setShowNotEnoughMessage] = useState(false);
-    const [showAddMessage, setShowAddMessage] = useState(false);
+    const [showNotEnough, setShowNotEnough] = useState(false);
+    const [showAdd, setShowAdd] = useState(false);
 
     const [leisureDropdownStates, setLeisureDropdownStates] = useState([]);
+
+    const [activeDropdown, setActiveDropdown] = useState(null);
 
     const handleChange = (e) => {
         setNewLeisure((recent) => ({...recent, [e.target.name]: e.target.value}))
@@ -68,15 +70,15 @@ const Shop = () => {
                 setPoints(leisureCost);
                 handlePoints(leisureCost, leisureId);
                 setAdd(true);
-                setShowAddMessage(true);
+                setShowAdd(true);
                 setTimeout(() => {
-                  setShowAddMessage(false);
-                }, 3000);
+                  setShowAdd(false);
+                }, 1000);
             } else {
-                setShowNotEnoughMessage(true);
+                setShowNotEnough(true);
                 setTimeout(() => {
-                  setShowNotEnoughMessage(false);
-                }, 3000);
+                  setShowNotEnough(false);
+                }, 1000);
             }
         }
     }
@@ -85,7 +87,14 @@ const Shop = () => {
         const newLeisureDropdownStates = [...leisureDropdownStates];
         newLeisureDropdownStates[i] = !newLeisureDropdownStates[i];
         setLeisureDropdownStates(newLeisureDropdownStates);
-      }
+
+        // update the active dropdown
+        if (activeDropdown !== null && activeDropdown !== i) {
+            newLeisureDropdownStates[activeDropdown] = false;
+            setLeisureDropdownStates(newLeisureDropdownStates);
+        }
+        setActiveDropdown(newLeisureDropdownStates[i] ? i : null);
+    }
 
   return ( 
     <div className="dash">
@@ -101,8 +110,8 @@ const Shop = () => {
                     <label>Cost</label>
                     <input type="number" min="1" name="cost" value={newLeisure.cost} required={true} onChange={handleChange}></input>
                     <button type="submit" className="add-task-btn">Add</button>
-                    {showAddMessage && <h3>Leisure added to dashboard!</h3>}
-                    {showNotEnoughMessage && <h3>Not enough points!</h3>}
+                    {showAdd && <h3 id="green-msg">Leisure added to dashboard!</h3>}
+                    {showNotEnough && <h3 id="red-msg">Not enough points</h3>}
                 </div>
             </form>
             { user &&
@@ -114,10 +123,10 @@ const Shop = () => {
                     return (
                         <div key={i}>
                         {leisure.added === true?
-                                    <></>
+                            <></>
 
                                     :
-                            <div className={showNotEnoughMessage ? 'red-list-item' : 'list-item'} key={leisure._id}>
+                            <div className='list-item' key={leisure._id}>
                                 <div className="drop-wrap">
                                     <p>COST: <b>{leisure.cost}</b></p>
                                     <div className="dropdown">
