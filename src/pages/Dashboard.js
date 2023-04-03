@@ -88,8 +88,7 @@ const { user, setUser, tasks, setTasks, check, setCheck, setPoints, setRender, r
         const newTaskDropdownStates = [...taskDropdownStates];
         newTaskDropdownStates[i] = !newTaskDropdownStates[i];
         setTaskDropdownStates(newTaskDropdownStates);
-
-        // update the active dropdown
+        
         if (activeDropdown !== null && activeDropdown !== i) {
             newTaskDropdownStates[activeDropdown] = false;
             setTaskDropdownStates(newTaskDropdownStates);

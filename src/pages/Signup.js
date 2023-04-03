@@ -15,6 +15,8 @@ const Signup = () => {
         }
     )
 
+    const [ message, setMessage ] = useState('');
+
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -34,6 +36,9 @@ const Signup = () => {
             })
             .catch((err) => {
                 console.log(err)
+                setTimeout(()=>{
+                    setMessage(err.response.data.message);
+                }, 1000)
             })
             .finally(() => {
                 authenticateUser()
@@ -43,14 +48,12 @@ const Signup = () => {
     return (
         <div className="signup-form">
             <form onSubmit={handleSubmit}>
-
                 <label>Email</label>
                 <input type='email' name="email" value={newUser.email} onChange={handleChange}></input>
-
                 <label>Password</label>
                 <input type='password' name="password" value={newUser.password} onChange={handleChange}></input>
-
                 <button type="submit">Sign Up</button>
+                <h4 className="err-msg">{message}</h4>
             </form>
             <p>Already a user? <Link to="/login">Log In</Link></p>
         </div>

@@ -87,10 +87,15 @@ a:hover:before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 80vh;
-    width: 80vw;
     padding: 10px;
     gap: 10px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .logo {
@@ -106,17 +111,26 @@ a:hover:before {
 }
 
 .dashboard-block input {
-    padding: 10px;
-    width: 250px;
-    background-color: rgba(156, 156, 156, 0.8);
-    border: 2px solid rgba(200, 200, 200, 0.1);
-    border-radius: 25px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-    text-align: center;
+  padding: 10px;
+  width: 250px;
+  background-color: rgba(156, 156, 156, 0.8);
+  border: 2px solid rgba(200, 200, 200, 0.1);
+  border-radius: 25px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  text-align: center;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
-.dashboard-block input:focus, textarea {
-    outline: none !important;
+.dashboard-block input:hover {
+  background-color: rgba(175, 175, 175, 0.9);
+  border-color: rgba(200, 200, 200, 0.5);
+}
+
+.dashboard-block input:focus {
+  outline: none;
+  background-color: rgba(195, 195, 195, 0.9);
+  border-color: rgba(100, 100, 100, 0.8);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .list-item {
@@ -223,6 +237,11 @@ a:hover:before {
     background-color: #3e8e41;
   }
   
+  .err-msg {
+    color: red;
+    text-align: center;
+  }
+
   .login-form {
     max-width: 400px;
     margin: 0 auto;
@@ -369,21 +388,6 @@ a:hover:before {
     text-align: center;
   }
 
-  .update-page button {
-    background-color: rgb(238, 149, 47);
-    border: none;
-    color: #fff;
-    padding: 12px 24px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 25px;
-  }
-
-  .update-page button:hover {
-    background-color: #3e8e41;
-    transition: 0.2s;
-  }
-
   .button:hover {
     background-color: #3e8e41;
   }
@@ -408,11 +412,15 @@ a:hover:before {
     font-size: 16px;
     cursor: pointer;
     border-radius: 25px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+    background-position: -100% 50%;
+    background-size: 200% 100%;
+    transition: all 0.4s;
   }
-
+  
   .add-task-btn:hover {
     background-color: #3e8e41;
-    transition: 0.2s;
+    background-position: 100% 50%;
   }
 
   .drop-wrap {

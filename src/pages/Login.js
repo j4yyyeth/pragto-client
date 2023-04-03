@@ -16,6 +16,8 @@ const Login = () => {
         }
     )
 
+    const [ message, setMessage ] = useState('');
+
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -31,10 +33,12 @@ const Login = () => {
                 console.log("Created User", results.data)
                 navigate('/')
                 localStorage.setItem('authToken', results.data.token )
-                
             })
             .catch((err) => {
                 console.log(err)
+                setTimeout(()=>{
+                    setMessage(err.response.data.message);
+                }, 1000)
             })
             .finally(() => {
                 authenticateUser()
@@ -47,11 +51,10 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <label>Email</label>
                 <input type='email' name="email" value={thisUser.email} onChange={handleChange}></input>
-
                 <label>Password</label>
                 <input type='password' name="password" value={thisUser.password} onChange={handleChange}></input>
-
                 <button type="submit">Login</button>
+                <h4 className="err-msg">{message}</h4>
             </form>
             <p>Not a user? <Link to="/signup">Sign Up</Link></p>
         </div>
