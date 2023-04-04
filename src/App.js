@@ -11,6 +11,7 @@ import Shop from './pages/Shop';
 import TaskUpdate from './pages/TaskUpdate';
 import LeisureUpdate from './pages/LeisureUpdate';
 import NotFound from './pages/NotFound';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
         </Route>
 
       </Routes>
+      <ScrollToTop />
     </div>
   );
 }

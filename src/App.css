@@ -1,113 +1,108 @@
 body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    background-color: rgb(217, 217, 217);
-    font-family: 'Barlow', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: rgb(217, 217, 217);
+  font-family: 'Barlow', sans-serif;
 }
 
 form input:focus, textarea {
-  outline: none !important;
+outline: none !important;
 }
 
 #red-msg {
-  color: red;
+color: red;
 }
 
 #green-msg {
-  color: #1d9221;
+color: #1d9221;
 }
 
 nav {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: 40px;
-    padding: 15px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 45px;
-    background-color: rgba(255, 255, 255, 0.5);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  padding: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 45px;
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 1000;
 }
 
 .nav-color {
-  background-color: rgba(255, 255, 255, 0.9);
-  color: black;
+  background-color: black;
+  color: rgba(255, 255, 255);
 }
 
 nav a {
-    font-weight: bold;
-    font-size: 18px;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: rgb(239, 143, 32);
-    padding: 20px 0px;
-    margin: 0px 20px;
-    display: inline-block;
-    position: relative;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgb(239, 143, 32);
+  padding: 20px 0px;
+  margin: 0px 20px;
+  display: inline-block;
+  position: relative;
 }
 
 nav a:before {
-    transition: 300ms;
-    height: 5px;
-    content: "";
-    position: absolute;
-    background-color: rgb(244, 156, 54);
-    width: 0%;
-    bottom: 10px;
+  transition: 300ms;
+  height: 5px;
+  content: "";
+  position: absolute;
+  background-color: rgb(244, 156, 54);
+  width: 0%;
+  bottom: 10px;
 }
 
 nav span a {
-    padding: 0px 0px;
-    margin: 0px 0px;
+  padding: 0px 0px;
+  margin: 0px 0px;
 }
 
 nav span a:before {
-    height: 0px;
-    position: absolute;
-    width: 0%;
-    bottom: 0px;
-}
-
-span a:hover:before {
-    color: rgb(0, 0, 0);
-    opacity: 1;
-    width: 0%;
+  height: 0px;
+  position: absolute;
+  width: 0%;
+  bottom: 0px;
 }
 
 a:hover:before {
-    color: rgb(0, 0, 0);
-    opacity: 1;
-    width: 100%;
+  color: rgb(0, 0, 0);
+  opacity: 1;
+  width: 100%;
 }
 
 .dashboard-block {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    gap: 10px;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .logo {
-    width: 95px;
+  width: 95px;
 }
 
 .input-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .dashboard-block input {
@@ -289,22 +284,45 @@ a:hover:before {
     text-decoration: none;
   }
 
- .top {
-    background-color: rgba(94, 94, 94, 0.15);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  .top {
+    background-color: black;
+    color: rgb(217, 217, 217);
     padding: 20px;
-  }
+  } 
 
-.top span {
-    font-weight: 900;
-  }
-  
   .hero-section {
-    margin-top: 1rem;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 15rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem;
+    height: 72vh;
+    animation: fadeIn 1s ease-in-out forwards;
+    margin-top: 1rem;
+  }
+  
+  .hero-text span {
+    color: rgb(244, 156, 54);
+  }
+  
+  .hero-text a {
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+    background-color: rgb(244, 156, 54);
+    color: black;
+    text-decoration: none;
+    border-radius: 1rem;
+  }
+
+  .hero-text a:hover {
+    background-color: black;
+    color: rgb(244, 156, 54);
+  }
+
+  .hero-text p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
   }
   
   .hero-text h1 {
@@ -312,16 +330,12 @@ a:hover:before {
     margin: 0;
   }
 
-  .hero-text p {
-    font-size: 1.2rem;
-  }
-
   .hero-image img {
     width: 42vw;
     height: auto;
     border-radius: 50px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease-out;
+    border: 0.5rem solid rgb(244, 156, 54);
   }
   
   .hero-image img:hover {
@@ -334,6 +348,7 @@ a:hover:before {
     flex-direction: column;
     gap: 8rem;
     align-items: center;
+    padding: 4rem;
   }
 
   .how-to {
@@ -346,11 +361,27 @@ a:hover:before {
   .how-to-txt {
     text-align: center;
     width: 15rem;
+    margin-bottom: 2rem;
+  }
+
+  .how-to-txt h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .how-to-txt p {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .reminder {
     display: flex;
+    flex-direction: row;
     align-items: center;
+    font-size: 1rem;
+    padding: 1rem;
+    background-color: rgb(244, 156, 54);
+    color: black;
     gap: 10px;
   }
 
@@ -510,18 +541,11 @@ a:hover:before {
   color: #2bdb31;
 }
 
-.poof {
-  position: relative;
-  animation: poof 0.5s ease-out;
-}
-
-@keyframes poof {
+@keyframes fadeIn {
   0% {
-    opacity: 1;
-    transform: scale(1);
+    opacity: 0;
   }
   100% {
-    opacity: 0;
-    transform: scale(3);
+    opacity: 1;
   }
 }

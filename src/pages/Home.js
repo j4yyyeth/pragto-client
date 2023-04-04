@@ -5,13 +5,18 @@ import { LoadingContext } from "../context/loading";
 const Home = () => {
 
   const { user } = useContext(LoadingContext);
+
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  }
+
   return (
     <>
       <div className="top">
         <section className="hero-section">
           <div className="hero-text">
             <h1>Pragto</h1>
-            <p>Your very own simplified to-do app, but fun and <span>rewarding</span>, <span>literally</span></p>
+            <p>Get things done and get <span>rewarded</span></p>
             {
               user ? 
 
