@@ -26,6 +26,7 @@ const Navbar = () => {
     const { user } = useContext(LoadingContext);
 
     return (
+        <>
         <nav className={color ? 'nav-color' : 'no-color'}>
         <span><Link to={'/'}><img className="logo" src={require('../logo.png')} alt="logo" /></Link></span>
             {
@@ -52,7 +53,8 @@ const Navbar = () => {
                 <Link to={'/login'}>Login</Link>
                 </>
             }
-        </nav> 
+        </nav>
+        </>
     )
 }
 
