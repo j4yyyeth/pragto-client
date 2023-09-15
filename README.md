@@ -1,6 +1,8 @@
 # Pragto - A Gamified To-Do App
 Pragto is a web-based to-do application that allows users to create tasks and set their own points per task. Once the task is completed, users earn the points they've assigned to the task, and they can spend those points on leisure activities. Pragto helps you to be more productive while being a fun and rewarding experience!
 
+Server Repo: https://github.com/j4yyyeth/pragto-server
+
 ![pragto](https://user-images.githubusercontent.com/113713677/232830607-bd8a6952-0db0-4767-9b61-b178cc19b5c2.jpg)
 
 ## Usage
