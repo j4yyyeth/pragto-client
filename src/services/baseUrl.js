@@ -1,1 +1,1 @@
-export const baseUrl = "https://pragto.fly.dev"
+export const baseUrl = "https://pragto.fly.dev";

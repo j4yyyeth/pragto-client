@@ -6,16 +6,24 @@ body {
   font-family: 'Barlow', sans-serif;
 }
 
-form input:focus, textarea {
-outline: none !important;
+form input:focus,
+textarea {
+  outline: none !important;
+}
+
+.pts-flex-p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .1rem;
 }
 
 #red-msg {
-color: red;
+  color: red;
 }
 
 #green-msg {
-color: #1d9221;
+  color: #1d9221;
 }
 
 nav {
@@ -131,10 +139,10 @@ a:hover:before {
 }
 
 .list-item {
-    background-color: rgba(255, 255, 255, 0.35);
-    width: 500px;
-    height: 80px;
-    border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.35);
+  width: 500px;
+  height: 80px;
+  border-radius: 15px;
 }
 
 .list-txt {
@@ -147,7 +155,7 @@ a:hover:before {
 }
 
 .list-item input {
-    width: 15px;
+  width: 15px;
 }
 
 .list-item-leisure {
@@ -183,344 +191,352 @@ a:hover:before {
   text-decoration: line-through;
 }
 
-  .coins-img {
-    width: 88px;
-  }
+.points-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+}
 
-  .points-nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
+.coin-icon {
+  height: 30px;
+  width: 30px;
+  fill: rgb(214, 136, 46);
+}
 
-  .signup-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f6f6f6;
-    margin-top: 150px;
-    overflow-x: hidden;
-  }
-  
-  .signup-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .signup-form input[type="email"],
-  .signup-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .signup-form button[type="submit"] {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: rgb(239, 143, 32);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .signup-form button[type="submit"]:hover {
-    background-color: #3e8e41;
-  }
-  
-  .err-msg {
-    color: red;
-    text-align: center;
-  }
+.three-icon {
+  height: 20px;
+  width: 20px;
+}
 
-  .login-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f6f6f6;
-    margin-top: 150px;
-    overflow-x: hidden;
-  }
-  
-  .login-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .login-form input[type="email"],
-  .login-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .login-form button[type="submit"] {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: rgb(238, 149, 47);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .login-form button[type="submit"]:hover {
-    background-color: #3e8e41;
-  }
+.signup-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f6f6f6;
+  margin-top: 150px;
+  overflow-x: hidden;
+}
 
-  a {
-    color: rgb(240, 130, 5);
-    font-size: 20px;
-    font-weight: 900;
-    text-decoration: none;
-  }
+.signup-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
-  .top {
-    background-color: black;
-    color: rgb(217, 217, 217);
-    padding: 20px;
-  } 
+.signup-form input[type="email"],
+.signup-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
-  .hero-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 4rem;
-    height: 72vh;
-    animation: fadeIn 1s ease-in-out forwards;
-    margin-top: 1rem;
-  }
-  
-  .hero-text span {
-    color: rgb(244, 156, 54);
-  }
-  
-  .hero-text a {
-    display: inline-block;
-    padding: 1rem 2rem;
-    margin-top: 2rem;
-    background-color: rgb(244, 156, 54);
-    color: black;
-    text-decoration: none;
-    border-radius: 1rem;
-  }
+.signup-form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(239, 143, 32);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  .hero-text a:hover {
-    background-color: black;
-    color: rgb(244, 156, 54);
-  }
+.signup-form button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
 
-  .hero-text p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .hero-text h1 {
-    font-size: 4rem;
-    margin: 0;
-  }
+.err-msg {
+  color: red;
+  text-align: center;
+}
 
-  .hero-image img {
-    width: 42vw;
-    height: auto;
-    border-radius: 50px;
-    transition: transform 0.2s ease-out;
-    border: 0.5rem solid rgb(244, 156, 54);
-  }
-  
-  .hero-image img:hover {
-    transform: scale(1.1);
-  }
+.login-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f6f6f6;
+  margin-top: 150px;
+  overflow-x: hidden;
+}
 
-  .middle {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 8rem;
-    align-items: center;
-    padding: 4rem;
-  }
+.login-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
-  .how-to {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25rem;
-  }
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
-  .how-to-txt {
-    text-align: center;
-    width: 15rem;
-    margin-bottom: 2rem;
-  }
+.login-form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(238, 149, 47);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  .how-to-txt h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
+.login-form button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
 
-  .how-to-txt p {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
+a {
+  color: rgb(240, 130, 5);
+  font-size: 20px;
+  font-weight: 900;
+  text-decoration: none;
+}
 
-  .reminder {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 1rem;
-    padding: 1rem;
-    background-color: rgb(244, 156, 54);
-    color: black;
-    gap: 10px;
-  }
+.top {
+  background-color: black;
+  color: rgb(217, 217, 217);
+  padding: 20px;
+}
 
-  footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    color: white;
-    height: 50px;
-  }
+.hero-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem;
+  height: 72vh;
+  animation: fadeIn 1s ease-in-out forwards;
+  margin-top: 1rem;
+}
 
-  .update-page {
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.hero-text span {
+  color: rgb(244, 156, 54);
+}
 
-  .update-page form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
+.hero-text a {
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  background-color: rgb(244, 156, 54);
+  color: black;
+  text-decoration: none;
+  border-radius: 1rem;
+}
 
-  .update-page form input {
-    padding: 10px;
-    width: 250px;
-    background-color: rgba(156, 156, 156, 0.8);
-    border: 2px solid rgba(200, 200, 200, 0.1);
-    border-radius: 25px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-    text-align: center;
-  }
+.hero-text a:hover {
+  background-color: black;
+  color: rgb(244, 156, 54);
+}
 
-  .button:hover {
-    background-color: #3e8e41;
-  }
+.hero-text p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
 
-  .dash {
-    padding: 10px;
-  }
+.hero-text h1 {
+  font-size: 4rem;
+  margin: 0;
+}
 
-  .shop {
-    padding: 10px;
-  }
+.hero-image img {
+  width: 42vw;
+  height: auto;
+  border-radius: 50px;
+  transition: transform 0.2s ease-out;
+  border: 0.5rem solid rgb(244, 156, 54);
+}
 
-  .shop-text {
-    font-size: large;
-  }
+.hero-image img:hover {
+  transform: scale(1.1);
+}
 
-  .add-task-btn {
-    background-color: rgb(238, 149, 47);
-    border: none;
-    color: #fff;
-    padding: 12px 24px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 25px;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
-    background-position: -100% 50%;
-    background-size: 200% 100%;
-    transition: all 0.4s;
-  }
-  
-  .add-task-btn:hover {
-    background-color: #3e8e41;
-    background-position: 100% 50%;
-  }
+.middle {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  align-items: center;
+  padding: 4rem;
+}
 
-  .drop-wrap {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 500px;
-  }
+.how-to {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25rem;
+}
 
-  .drop-wrap p {
-    padding-left: 10px;
-  }
+.how-to-txt {
+  text-align: center;
+  width: 15rem;
+  margin-bottom: 2rem;
+}
 
-  .dropdown {
-    padding-right: 10px;
-    position: relative;
-    display: inline-block;
-  }
-  
-  .btn {
-    height: 30px;
-    width: 31px;
-    border-radius: 30px;
-    background-color: transparent;
-    color: rgb(91, 91, 91);
-    border: none;
-    cursor: pointer;
-    font-size: 21px;
-  }
+.how-to-txt h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 
-  .btn:hover {
-    color: rgba(0, 0, 0);
-  }
-  
-  .btn:focus {
-    outline: none;
-  }
-  
-  .dropdown-menu {
-    position: absolute;
-    top: calc(-50%);
-    display: none;
-    padding: 3px;
-    margin: 0 0 0 50px;
-    font-size: 14px;
-    text-align: center;
-    background-color: rgba(94, 94, 94, 0.35);
-    border-radius: 20px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  }
-  
-  .dropdown-menu.show {
-    display: block;
-  }
-  
-  .dropdown-menu .dropdown-item {
-    padding: 5px 20px;
-    clear: both;
-    font-weight: 900;
-    color: #ffffff;
-    background-color: transparent;
-    border: none;
-  }
-  
+.how-to-txt p {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.reminder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1rem;
+  padding: 1rem;
+  background-color: rgb(244, 156, 54);
+  color: black;
+  gap: 10px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  height: 50px;
+}
+
+.update-page {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.update-page form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.update-page form input {
+  padding: 10px;
+  width: 250px;
+  background-color: rgba(156, 156, 156, 0.8);
+  border: 2px solid rgba(200, 200, 200, 0.1);
+  border-radius: 25px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+.dash {
+  padding: 10px;
+}
+
+.shop {
+  padding: 10px;
+}
+
+.shop-text {
+  font-size: large;
+}
+
+.add-task-btn {
+  background-color: rgb(238, 149, 47);
+  border: none;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 25px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+  background-position: -100% 50%;
+  background-size: 200% 100%;
+  transition: all 0.4s;
+}
+
+.add-task-btn:hover {
+  background-color: #3e8e41;
+  background-position: 100% 50%;
+}
+
+.drop-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+}
+
+.drop-wrap p {
+  padding-left: 10px;
+}
+
+.dropdown {
+  padding-right: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.btn {
+  height: 30px;
+  width: 31px;
+  border-radius: 30px;
+  background-color: transparent;
+  color: rgb(91, 91, 91);
+  border: none;
+  cursor: pointer;
+  font-size: 21px;
+}
+
+.btn:hover {
+  color: rgba(0, 0, 0);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(-50%);
+  display: none;
+  padding: 3px;
+  margin: 0 0 0 50px;
+  font-size: 14px;
+  text-align: center;
+  background-color: rgba(94, 94, 94, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu .dropdown-item {
+  padding: 5px 20px;
+  clear: both;
+  font-weight: 900;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+}
+
 .dropdown-menu .dropdown-item:hover {
   cursor: pointer;
 }
@@ -549,6 +565,7 @@ a:hover:before {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -566,7 +583,7 @@ a:hover:before {
     flex-direction: column;
   }
 
-  .hero-text h1 -a{
+  .hero-text h1 -a {
     font-size: 1px;
   }
 
