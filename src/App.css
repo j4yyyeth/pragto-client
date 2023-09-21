@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   background-color: rgb(217, 217, 217);
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 form input:focus,

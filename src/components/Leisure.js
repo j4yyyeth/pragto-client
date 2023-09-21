@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import { get } from "../services/authService";
 import axios from "axios";
 import { baseUrl } from "../services/baseUrl";
-import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
-import { BsThreeDots } from "react-icons/bs";
-import { GrAddCircle } from "react-icons/gr";
+import { AiOutlineDelete, AiOutlineEdit, AiOutlinePlusCircle } from "react-icons/ai";
+import { BsCoin, BsThreeDots } from "react-icons/bs";
 
 const Leisure = ({ leisure, i, setShowNotEnough, setShowAdd }) => {
   const [leisureDropdownStates, setLeisureDropdownStates] = useState([]);
@@ -42,12 +41,12 @@ const Leisure = ({ leisure, i, setShowNotEnough, setShowAdd }) => {
         setShowAdd(true);
         setTimeout(() => {
           setShowAdd(false);
-        }, 1000);
+        }, 5000);
       } else {
         setShowNotEnough(true);
         setTimeout(() => {
           setShowNotEnough(false);
-        }, 1000);
+        }, 5000);
       }
     }
   };
@@ -61,11 +60,12 @@ const Leisure = ({ leisure, i, setShowNotEnough, setShowAdd }) => {
     }
     setActiveDropdown(newLeisureDropdownStates[i] ? i : null);
   }
+
   return (
     <div className="list-item" key={leisure._id}>
       <div className="drop-wrap">
-        <p>
-          COST: <b>{leisure.cost}</b>
+        <p className="pts-flex-p">
+          <BsCoin /> <b>{leisure.cost}</b>
         </p>
         <div className="dropdown">
           <button
@@ -85,7 +85,7 @@ const Leisure = ({ leisure, i, setShowNotEnough, setShowAdd }) => {
               className="dropdown-item plus-btn"
               onClick={() => handleAdd(leisure.cost, leisure._id)}
             >
-              <GrAddCircle />
+              <AiOutlinePlusCircle />
             </button>
             <button
               className="dropdown-item delete-btn"

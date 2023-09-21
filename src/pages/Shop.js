@@ -1,7 +1,13 @@
 import { post } from "../services/authService";
 import Leisure from "../components/Leisure";
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { LoadingContext } from "../context/loading";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const Shop = () => {
   const { user, leisures, setLeisures } = useContext(LoadingContext);
@@ -27,9 +33,30 @@ const Shop = () => {
         console.log(err);
       });
   };
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setShowAdd(false);
+    setShowNotEnough(false);
+  };
 
   return (
     <div className="dash">
+      <Snackbar open={showAdd} autoHideDuration={5000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          Leisure Purchased, Check Dashboard!
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={showNotEnough}
+        autoHideDuration={5000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          Not Enough Points!
+        </Alert>
+      </Snackbar>
       <div className="shop-text">
         <h3>Welcome to the Shop</h3>
         <p>Create a leisure and take a break!</p>
@@ -55,10 +82,8 @@ const Shop = () => {
               onChange={handleChange}
             ></input>
             <button type="submit" className="add-task-btn">
-              Add
+              Add Leisure
             </button>
-            {showAdd && <h3 id="green-msg">Leisure added to dashboard!</h3>}
-            {showNotEnough && <h3 id="red-msg">Not enough points</h3>}
           </div>
         </form>
         {user && (

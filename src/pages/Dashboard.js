@@ -3,6 +3,7 @@ import { LoadingContext } from "../context/loading";
 import { post } from "../services/authService";
 import Task from "../components/Task";
 import LeisureAdded from "../components/LeisureAdded";
+
 const Dashboard = () => {
   const { user, tasks, setTasks } = useContext(LoadingContext);
   const [newTask, setNewTask] = useState({
@@ -52,8 +53,8 @@ const Dashboard = () => {
               required={true}
               onChange={handleChange}
             ></input>
-            <button type="submit" className="add-task-btn">
-              Add
+            <button className="add-task-btn" type="submit">
+              Add Task
             </button>
           </div>
         </form>
