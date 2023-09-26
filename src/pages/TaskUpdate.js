@@ -43,20 +43,20 @@ const TaskUpdate = () => {
       {thisTask ? (
         <>
           <form onSubmit={handleSubmit}>
-            <div className="input-button">
-              <label>Task</label>
+            <div className="input-buttons">
               <input
                 type="text"
                 name="task"
                 value={thisTask.task}
                 onChange={handleChange}
+                placeholder="Task"
               ></input>
-              <label>Reward</label>
               <input
                 type="number"
                 name="reward"
                 value={thisTask.reward}
                 onChange={handleChange}
+                placeholder="Reward"
               ></input>
               <button type="submit" className="add-task-btn">
                 Change

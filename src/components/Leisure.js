@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import { get } from "../services/authService";
 import axios from "axios";
 import { baseUrl } from "../services/baseUrl";
-import { AiOutlineDelete, AiOutlineEdit, AiOutlinePlusCircle } from "react-icons/ai";
+import {
+  AiOutlineDelete,
+  AiOutlineEdit,
+  AiOutlinePlusCircle,
+} from "react-icons/ai";
 import { BsCoin, BsThreeDots } from "react-icons/bs";
 
 const Leisure = ({ leisure, i, setShowNotEnough, setShowAdd }) => {
@@ -68,14 +72,16 @@ const Leisure = ({ leisure, i, setShowNotEnough, setShowAdd }) => {
           <BsCoin /> <b>{leisure.cost}</b>
         </p>
         <div className="dropdown">
-          <button
-            className="btn"
-            onClick={() => toggleDropdown(i)}
-            aria-haspopup="true"
-            aria-expanded={leisureDropdownStates[i]}
-          >
-            <BsThreeDots />
-          </button>
+          <div className="three-dots-vis">
+            <button
+              className="btn"
+              onClick={() => toggleDropdown(i)}
+              aria-haspopup="true"
+              aria-expanded={leisureDropdownStates[i]}
+            >
+              <BsThreeDots />
+            </button>
+          </div>
           <div
             className={`dropdown-menu${
               leisureDropdownStates[i] ? " show" : ""

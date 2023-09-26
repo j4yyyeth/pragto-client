@@ -42,7 +42,7 @@ const Shop = () => {
   };
 
   return (
-    <div className="dash">
+    <div className="dash-shop">
       <Snackbar open={showAdd} autoHideDuration={5000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
           Leisure Purchased, Check Dashboard!
@@ -57,22 +57,17 @@ const Shop = () => {
           Not Enough Points!
         </Alert>
       </Snackbar>
-      <div className="shop-text">
-        <h3>Welcome to the Shop</h3>
-        <p>Create a leisure and take a break!</p>
-      </div>
       <div className="dashboard-block">
         <form onSubmit={handleSubmit}>
-          <div className="input-button">
-            <label>Leisure</label>
+          <div className="input-buttons">
             <input
               type="text"
               name="leisure"
               value={newLeisure.leisure}
               required={true}
               onChange={handleChange}
+              placeholder="Leisure"
             ></input>
-            <label>Cost</label>
             <input
               type="number"
               min="1"
@@ -80,6 +75,7 @@ const Shop = () => {
               value={newLeisure.cost}
               required={true}
               onChange={handleChange}
+              placeholder="Cost"
             ></input>
             <button type="submit" className="add-task-btn">
               Add Leisure
@@ -89,24 +85,26 @@ const Shop = () => {
         {user && (
           <>
             {user.leisures?.length ? (
-              user.leisures.map((leisure, i) => {
-                return (
-                  <div key={i}>
-                    {leisure.added === true ? (
-                      <></>
-                    ) : (
-                      <Leisure
-                        leisure={leisure}
-                        i={i}
-                        setShowNotEnough={setShowNotEnough}
-                        setShowAdd={setShowAdd}
-                      />
-                    )}
-                  </div>
-                );
-              })
+              <div className="item-container">
+                {user.leisures.map((leisure, i) => {
+                  return (
+                    <div key={i}>
+                      {leisure.added === true ? (
+                        <></>
+                      ) : (
+                        <Leisure
+                          leisure={leisure}
+                          i={i}
+                          setShowNotEnough={setShowNotEnough}
+                          setShowAdd={setShowAdd}
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             ) : (
-              <h4>Give yourself a break!</h4>
+              <p>Give yourself a break!</p>
             )}
           </>
         )}

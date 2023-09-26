@@ -45,26 +45,26 @@ const LeisureUpdate = () => {
     <div className="update-page">
       {thisLeisure ? (
         <>
-          <h1>LeisureUpdate</h1>
-
           <form onSubmit={handleSubmit}>
-            <label>Leisure</label>
-            <input
-              type="text"
-              name="leisure"
-              value={thisLeisure.leisure}
-              onChange={handleChange}
-            ></input>
-            <label>Cost</label>
-            <input
-              type="number"
-              name="cost"
-              value={thisLeisure.cost}
-              onChange={handleChange}
-            ></input>
-            <button type="submit" className="add-task-btn">
-              Change
-            </button>
+            <div className="input-buttons">
+              <input
+                type="text"
+                name="leisure"
+                value={thisLeisure.leisure}
+                onChange={handleChange}
+                placeholder="Leisure"
+              ></input>
+              <input
+                type="number"
+                name="cost"
+                value={thisLeisure.cost}
+                onChange={handleChange}
+                placeholder="Cost"
+              ></input>
+              <button type="submit" className="add-task-btn">
+                Change
+              </button>
+            </div>
           </form>
         </>
       ) : (

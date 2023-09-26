@@ -20,14 +20,6 @@ textarea {
   gap: .1rem;
 }
 
-#red-msg {
-  color: red;
-}
-
-#green-msg {
-  color: #1d9221;
-}
-
 nav {
   position: sticky;
   top: 0;
@@ -89,6 +81,24 @@ a:hover:before {
   width: 100%;
 }
 
+.dash {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.dash-shop {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .dashboard-block {
   margin: auto;
   display: flex;
@@ -96,6 +106,8 @@ a:hover:before {
   align-items: center;
   padding: 10px;
   gap: 10px;
+  background-color: rgb(175, 175, 175);
+  border-radius: 1rem;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -103,29 +115,39 @@ a:hover:before {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  width: 55vw;
 }
 
 .logo {
   width: 95px;
 }
 
-.input-button {
+.input-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+  margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 1440px) {
+  .input-buttons {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 .dashboard-block input {
   padding: 10px;
   width: 250px;
-  background-color: rgba(156, 156, 156, 0.8);
+  background-color: rgba(189, 189, 189, 0.8);
   border: 2px solid rgba(200, 200, 200, 0.1);
   border-radius: 25px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  text-align: center;
   transition: background-color 0.3s, border-color 0.3s;
+  font-size: 1rem;
+  color: black;
 }
 
 .dashboard-block input:hover {
@@ -140,54 +162,277 @@ a:hover:before {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.list-item {
-  background-color: rgba(255, 255, 255, 0.35);
-  width: 500px;
-  height: 80px;
-  border-radius: 15px;
+.item-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 40rem;
+  width: 50%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  gap: 1rem;
+  padding: 1rem;
 }
 
-.list-txt {
+.item-container::-webkit-scrollbar {
+  width: 14px;
+}
+
+.item-container::-webkit-scrollbar-thumb {
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: #7a7a7a;
+}
+
+.dashboard-block-leisures {
+  margin: auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  background-color: rgb(175, 175, 175);
+  border-radius: 1rem;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 30vw;
+}
+
+.list-item {
+  --cardShadowHover: rgba(32, 33, 37, .06);
+  --cardShadowActive: rgba(32, 33, 37, .55);
+  background-color: white;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  padding: .3rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  box-shadow: 8px 8px 0 var(--cardShadow);
+  transition: opacity 0.5s, transform 2s, box-shadow 0.5s ease-out;
+}
+
+.list-item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--cardShadowHover);
+}
+
+.drop-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 5rem;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: -15px;
+  top: 5px;
+  display: none;
+  padding: 3px;
+  font-size: 14px;
+  text-align: center;
+  background-color: rgba(94, 94, 94, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.btn {
+  height: 30px;
+  width: 31px;
+  border-radius: 30px;
+  background-color: transparent;
+  color: rgb(91, 91, 91);
+  border: none;
+  cursor: pointer;
+  font-size: 21px;
+}
+
+.btn:hover {
+  color: rgba(0, 0, 0);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu .dropdown-item {
+  padding: 5px 20px;
+  clear: both;
+  font-weight: 900;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  cursor: pointer;
+}
+
+.check-btn:hover {
+  color: #2bdb31;
+}
+
+.delete-btn:hover {
+  color: #f93333;
+}
+
+.edit-btn:hover {
+  color: black;
+}
+
+.plus-btn {
+  font-size: 21px;
+}
+
+.plus-btn:hover {
+  color: #2bdb31;
+}
+
+.three-dots-vis {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
 }
 
 .list-txt h4 {
-  margin: 0;
+  padding: 0;
 }
 
 .list-item input {
   width: 15px;
 }
 
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
 .list-item-leisure {
-  background-color: rgba(152, 152, 152, 0.35);
-  width: 500px;
-  height: 80px;
+  background-color: white;
+  max-width: 100%;
+  width: 100%;
+  height: 3.5rem;
+  border-radius: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-radius: 15px;
-}
-
-.list-item-leisure h4 {
-  margin-left: 10px;
+  padding: 0.5rem;
 }
 
 .check-btn-leisure {
   border: none;
   color: rgb(62, 170, 19);
   background-color: transparent;
-  margin-right: 10px;
-  font-size: 25px
+  font-size: 25px;
+  flex-shrink: 0;
 }
 
 .check-btn-leisure:hover {
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgb(208, 208, 208);
   border-radius: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .list-item-leisure {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .list-item-leisure h4 {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
+@media screen and (max-width: 475px) {
+
+  /* STYLES FOR THE WHOLE DASHBOARD. MAKE IT COLUMN. Also make each section take up a good portion of the screen */
+  /* ALSO MAKE 3 DOTS and PTS COLUMN */
+  .dash {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dashboard-block {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    background-color: rgb(175, 175, 175);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 100vw;
+    height: 60%;
+    margin-bottom: 5rem;
+  }
+
+  .dashboard-block-leisures {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    background-color: rgb(175, 175, 175);
+    border-radius: 1rem;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 80vw;
+    height: 40vh;
+  }
+}
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
 
 .scratched {
   text-decoration: line-through;
@@ -417,7 +662,7 @@ footer {
 }
 
 .update-page {
-  height: 90vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -445,14 +690,6 @@ footer {
   background-color: #3e8e41;
 }
 
-.dash {
-  padding: 10px;
-}
-
-.shop {
-  padding: 10px;
-}
-
 .shop-text {
   font-size: large;
 }
@@ -469,98 +706,12 @@ footer {
   background-position: -100% 50%;
   background-size: 200% 100%;
   transition: all 0.4s;
+  width: 250px;
 }
 
 .add-task-btn:hover {
   background-color: #3e8e41;
   background-position: 100% 50%;
-}
-
-.drop-wrap {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 500px;
-}
-
-.drop-wrap p {
-  padding-left: 10px;
-}
-
-.dropdown {
-  padding-right: 10px;
-  position: relative;
-  display: inline-block;
-}
-
-.btn {
-  height: 30px;
-  width: 31px;
-  border-radius: 30px;
-  background-color: transparent;
-  color: rgb(91, 91, 91);
-  border: none;
-  cursor: pointer;
-  font-size: 21px;
-}
-
-.btn:hover {
-  color: rgba(0, 0, 0);
-}
-
-.btn:focus {
-  outline: none;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: calc(-50%);
-  display: none;
-  padding: 3px;
-  margin: 0 0 0 50px;
-  font-size: 14px;
-  text-align: center;
-  background-color: rgba(94, 94, 94, 0.35);
-  border-radius: 20px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-}
-
-.dropdown-menu.show {
-  display: block;
-}
-
-.dropdown-menu .dropdown-item {
-  padding: 5px 20px;
-  clear: both;
-  font-weight: 900;
-  color: #ffffff;
-  background-color: transparent;
-  border: none;
-}
-
-.dropdown-menu .dropdown-item:hover {
-  cursor: pointer;
-}
-
-.check-btn:hover {
-  color: #2bdb31;
-}
-
-.delete-btn:hover {
-  color: #f93333;
-}
-
-.edit-btn:hover {
-  color: black;
-}
-
-.plus-btn {
-  font-size: 21px;
-}
-
-.plus-btn:hover {
-  color: #2bdb31;
 }
 
 @keyframes fadeIn {
@@ -570,109 +721,5 @@ footer {
 
   100% {
     opacity: 1;
-  }
-}
-
-@media (max-width: 880px) {
-  .how-to {
-    gap: 100px;
-  }
-}
-
-@media (max-width: 767px) {
-
-  .hero-section {
-    flex-direction: column;
-  }
-
-  .hero-text h1 -a {
-    font-size: 1px;
-  }
-
-  .hero-image img {
-    width: 70vw;
-    margin-top: 2rem;
-  }
-
-  .how-to {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .reminder {
-    font-size: 0.9rem;
-    padding: 0.5rem;
-  }
-
-  .list-item,
-  .list-item-leisure {
-    width: 50vw;
-    font-size: 12px;
-    padding: 2.5px;
-  }
-
-  .drop-wrap {
-    width: 50vw;
-  }
-
-  .dropdown-menu {
-    position: absolute;
-    top: calc(-30%);
-    display: none;
-    padding: 3px;
-    margin: 0 0 0 50px;
-    font-size: 14px;
-    text-align: center;
-    background-color: rgba(94, 94, 94, 0.35);
-    border-radius: 20px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  }
-}
-
-@media (max-width: 700px) {
-  nav {
-    gap: 1px;
-    font-size: 16px;
-  }
-
-  nav a {
-    font-size: 16px;
-  }
-
-  .logo {
-    width: 50px;
-  }
-
-  .coins-img {
-    width: 50px;
-  }
-}
-
-@media (max-width: 435px) {
-  nav {
-    gap: 1px;
-    font-size: 12px;
-  }
-
-  nav a {
-    font-size: 12px;
-  }
-
-  .logo {
-    width: 30px;
-  }
-
-  .coins-img {
-    width: 30px;
-  }
-
-  .list-item,
-  .list-item-leisure {
-    width: 50vw;
-    font-size: 11px;
-  }
-
-  .drop-wrap {
-    width: 50vw;
   }
 }

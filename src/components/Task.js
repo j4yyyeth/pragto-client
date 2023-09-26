@@ -13,16 +13,10 @@ import { BsCoin, BsThreeDots } from "react-icons/bs";
 
 const Task = ({ task, i }) => {
   const [taskDropdownStates, setTaskDropdownStates] = useState([]);
+  const [activeTooltip, setActiveTooltip] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const {
-    user,
-    setUser,
-    check,
-    setCheck,
-    setPoints,
-    setRender,
-    render,
-  } = useContext(LoadingContext);
+  const { user, setUser, check, setCheck, setPoints, setRender, render } =
+    useContext(LoadingContext);
   const handleTaskDelete = (id, index) => {
     get(`/todo/delete/${id}`)
       .then((results) => {
@@ -75,14 +69,16 @@ const Task = ({ task, i }) => {
           <BsCoin /> <b>{task.reward}</b>
         </p>
         <div className="dropdown">
-          <button
-            className="btn"
-            onClick={() => toggleDropdown(i)}
-            aria-haspopup="true"
-            aria-expanded={taskDropdownStates[i]}
-          >
-            <BsThreeDots />
-          </button>
+          <div className="three-dots-vis">
+            <button
+              className="btn"
+              onClick={() => toggleDropdown(i)}
+              aria-haspopup="true"
+              aria-expanded={taskDropdownStates[i]}
+            >
+              <BsThreeDots />
+            </button>
+          </div>
           <div
             className={`dropdown-menu${taskDropdownStates[i] ? " show" : ""}`}
           >
@@ -108,11 +104,11 @@ const Task = ({ task, i }) => {
           </div>
         </div>
       </div>
-      <div className="list-txt">
+      <div className="list-item-txt">
         {task.done === true ? (
           <h4 className="scratched">{task.task}</h4>
         ) : (
-          <h4>{task.task}</h4>
+          <h4 className="task-text">{task.task}</h4>
         )}
       </div>
     </div>
