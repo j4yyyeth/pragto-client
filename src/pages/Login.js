@@ -27,7 +27,7 @@ const Login = () => {
     post("/auth/login", thisUser)
       .then((results) => {
         console.log("Created User", results.data);
-        navigate("/");
+        navigate("/dashboard");
         localStorage.setItem("authToken", results.data.token);
       })
       .catch((err) => {
@@ -42,27 +42,41 @@ const Login = () => {
   };
 
   return (
-    <div className="login-form">
-      <form onSubmit={handleSubmit}>
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          value={thisUser.email}
-          onChange={handleChange}
-        ></input>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          value={thisUser.password}
-          onChange={handleChange}
-        ></input>
-        <button type="submit">Login</button>
+    <div className="signin-page">
+      <form className="signin-form" onSubmit={handleSubmit}>
+        <div class="form__group field">
+          <input
+            type="email"
+            name="email"
+            value={thisUser.email}
+            onChange={handleChange}
+            class="form__field"
+            placeholder="Email"
+            required
+          ></input>
+          <label for="email" class="form__label">
+            Email
+          </label>
+        </div>
+        <div class="form__group field">
+          <input
+            type="password"
+            name="password"
+            value={thisUser.password}
+            onChange={handleChange}
+            class="form__field"
+            placeholder="Password"
+            required
+          ></input>
+          <label for="password" class="form__label">
+            Password
+          </label>
+        </div>
+        <button className="signin-btn" type="submit">Log In</button>
         <h4 className="err-msg">{message}</h4>
       </form>
       <p>
-        Not a user? <Link to="/signup">Sign Up</Link>
+        No account? <Link to="/signup">Sign Up</Link>
       </p>
     </div>
   );

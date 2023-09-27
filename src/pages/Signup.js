@@ -27,7 +27,7 @@ const Signup = () => {
     post("/auth/signup", newUser)
       .then((results) => {
         console.log("Created User", results.data);
-        navigate(`/`);
+        navigate(`/dashboard`);
         localStorage.setItem("authToken", results.data.token);
       })
       .catch((err) => {
@@ -42,27 +42,43 @@ const Signup = () => {
   };
 
   return (
-    <div className="signup-form">
-      <form onSubmit={handleSubmit}>
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          value={newUser.email}
-          onChange={handleChange}
-        ></input>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          value={newUser.password}
-          onChange={handleChange}
-        ></input>
-        <button type="submit">Sign Up</button>
+    <div className="signin-page">
+      <form className="signin-form" onSubmit={handleSubmit}>
+        <div class="form__group field">
+          <input
+            type="email"
+            name="email"
+            value={newUser.email}
+            onChange={handleChange}
+            class="form__field"
+            placeholder="Email"
+            required
+          ></input>
+          <label for="email" class="form__label">
+            Email
+          </label>
+        </div>
+        <div class="form__group field">
+          <input
+            type="password"
+            name="password"
+            value={newUser.password}
+            onChange={handleChange}
+            class="form__field"
+            placeholder="Password"
+            required
+          ></input>
+          <label for="password" class="form__label">
+            Password
+          </label>
+        </div>
+        <button className="signin-btn" type="submit">
+          Sign Up
+        </button>
         <h4 className="err-msg">{message}</h4>
       </form>
       <p>
-        Already a user? <Link to="/login">Log In</Link>
+        Already have an account? <Link to="/login">Log In</Link>
       </p>
     </div>
   );
