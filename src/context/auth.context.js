@@ -17,7 +17,6 @@ const AuthProvider = ({ children }) => {
     if (token) {
       get("/auth/verify")
         .then((results) => {
-          console.log("Are we logged in?", results.data);
           setUser(results.data);
         })
         .catch((err) => {
@@ -41,7 +40,6 @@ const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.clear();
     setMessage("You are logged out.");
-    console.log("we've logged out");
     setUser(null);
     navigate("/");
   };

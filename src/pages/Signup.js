@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { post } from "../services/authService";
 import { AuthContext } from "../context/auth.context";
@@ -18,7 +18,6 @@ const Signup = () => {
 
   const handleChange = (e) => {
     setNewUser((recent) => ({ ...recent, [e.target.name]: e.target.value }));
-    console.log("Changing:", newUser);
   };
 
   const handleSubmit = (e) => {
@@ -26,7 +25,6 @@ const Signup = () => {
 
     post("/auth/signup", newUser)
       .then((results) => {
-        console.log("Created User", results.data);
         navigate(`/dashboard`);
         localStorage.setItem("authToken", results.data.token);
       })
@@ -75,8 +73,8 @@ const Signup = () => {
         <button className="signin-btn" type="submit">
           Sign Up
         </button>
-        <h4 className="err-msg">{message}</h4>
       </form>
+      <h4 className="err-msg">{message}</h4>
       <p>
         Already have an account? <Link to="/login">Log In</Link>
       </p>

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { post } from "../services/authService";
@@ -26,7 +26,6 @@ const Login = () => {
 
     post("/auth/login", thisUser)
       .then((results) => {
-        console.log("Created User", results.data);
         navigate("/dashboard");
         localStorage.setItem("authToken", results.data.token);
       })
@@ -72,9 +71,11 @@ const Login = () => {
             Password
           </label>
         </div>
-        <button className="signin-btn" type="submit">Log In</button>
-        <h4 className="err-msg">{message}</h4>
+        <button className="signin-btn" type="submit">
+          Log In
+        </button>
       </form>
+      <h4 className="err-msg">{message}</h4>
       <p>
         No account? <Link to="/signup">Sign Up</Link>
       </p>

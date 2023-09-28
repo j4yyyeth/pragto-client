@@ -13,7 +13,6 @@ import { BsCoin, BsThreeDots } from "react-icons/bs";
 
 const Task = ({ task, i }) => {
   const [taskDropdownStates, setTaskDropdownStates] = useState([]);
-  const [activeTooltip, setActiveTooltip] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const { user, setUser, check, setCheck, setPoints, setRender, render } =
     useContext(LoadingContext);

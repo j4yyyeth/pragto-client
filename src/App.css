@@ -617,6 +617,10 @@ a:hover:before {
   text-align: center;
 }
 
+.err-message {
+  color: black;
+}
+
 .how-to-txt {
   background-color: #f9f9f9;
   padding: 20px;
