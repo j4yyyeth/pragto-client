@@ -81,7 +81,7 @@ const Home = () => {
         </div>
       </section>
       <footer>
-        <h3>© 2023 Pragto</h3>
+        <h3>© {new Date().getFullYear()} Pragto</h3> 
       </footer>
     </main>
   );
